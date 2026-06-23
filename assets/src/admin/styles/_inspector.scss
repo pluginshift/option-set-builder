@@ -1,0 +1,281 @@
+/* Right inspector pane. */
+
+.optset-inspector {
+	background: $optset-surface;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+
+	&__head {
+		display: flex;
+		align-items: center;
+		gap: $optset-space-sm;
+		padding: $optset-space;
+		border-block-end: 1px solid $optset-border;
+
+		.dashicons {
+			color: $optset-accent;
+		}
+	}
+
+	&__title {
+		font-weight: 600;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	&__tabs {
+		display: flex;
+		border-block-end: 1px solid $optset-border;
+		overflow-x: auto;
+	}
+
+	&__tab {
+		border: none;
+		background: none;
+		padding: 10px 12px;
+		font-size: 12px;
+		font-weight: 600;
+		color: $optset-text-muted;
+		cursor: pointer;
+		border-block-end: 2px solid transparent;
+		white-space: nowrap;
+
+		&.is-active {
+			color: $optset-accent;
+			border-block-end-color: $optset-accent;
+		}
+	}
+
+	&__content {
+		overflow: auto;
+		padding: $optset-space;
+	}
+
+	&__pane {
+		display: flex;
+		flex-direction: column;
+		gap: $optset-space;
+	}
+
+	&__row {
+		display: flex;
+		flex-wrap: wrap;
+		gap: $optset-space;
+	}
+}
+
+.optset-form-field {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+
+	&--inline {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__label {
+		font-weight: 600;
+		font-size: 12px;
+	}
+
+	&__help {
+		color: $optset-text-muted;
+		font-size: 11px;
+		margin: 0;
+	}
+}
+
+.optset-choice-row {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+
+	&__main {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: 1.4fr 1fr 1fr;
+		gap: 6px;
+	}
+
+	&__selected {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 12px;
+		color: $optset-text-muted;
+	}
+}
+
+/* ---- Conditional Logic tab ---- */
+.optset-logic {
+	&__enable {
+		display: flex;
+		align-items: center;
+		padding: 14px 16px;
+		border: 1px solid var(--optset-c-border);
+		border-radius: var(--optset-c-radius-sm);
+		background: var(--optset-c-surface-2);
+	}
+
+	/* "[Show] this field if [Any] of these rules match:" */
+	&__sentence {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 8px;
+		font-size: 13px;
+		color: var(--optset-c-ink-soft);
+
+		.optset-select-control {
+			width: auto;
+			min-width: 84px;
+			font-weight: 600;
+		}
+	}
+
+	&__text {
+		white-space: nowrap;
+	}
+
+	&__table {
+		border: 1px solid var(--optset-c-border);
+		border-radius: var(--optset-c-radius);
+		overflow: hidden;
+		background: var(--optset-c-surface);
+	}
+
+	&__head {
+		display: grid;
+		grid-template-columns: 1.3fr 1fr 1.3fr 34px;
+		gap: 8px;
+		align-items: center;
+		padding: 10px 12px;
+		background: var(--optset-c-surface-2);
+		border-block-end: 1px solid var(--optset-c-border);
+		font-size: 11px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		color: var(--optset-c-muted);
+	}
+
+	&__empty {
+		margin: 0;
+		padding: 16px 12px;
+		font-size: 12px;
+		color: var(--optset-c-muted);
+		text-align: center;
+	}
+
+	&__row {
+		display: grid;
+		grid-template-columns: 1.3fr 1fr 1.3fr 34px;
+		gap: 8px;
+		align-items: center;
+		padding: 10px 12px;
+		border-block-end: 1px solid var(--optset-c-border);
+
+		&:last-of-type {
+			border-block-end: 0;
+		}
+	}
+
+	&__value {
+		min-width: 0;
+
+		.optset-input,
+		.optset-select-control {
+			width: 100%;
+		}
+	}
+
+	&__del {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 30px;
+		height: 30px;
+		padding: 0;
+		border: 0;
+		border-radius: var(--optset-c-radius-sm);
+		background: transparent;
+		color: var(--optset-c-muted);
+		cursor: pointer;
+		transition: background 0.15s ease, color 0.15s ease;
+
+		&:hover {
+			background: var(--optset-c-danger-soft);
+			color: var(--optset-c-danger);
+		}
+
+		.dashicons {
+			font-size: 17px;
+			width: 17px;
+			height: 17px;
+		}
+	}
+
+	&__add {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		margin: 12px;
+		padding: 9px 16px;
+		border: 0;
+		border-radius: var(--optset-c-radius-sm);
+		background: var(--optset-c-primary);
+		color: #fff;
+		font-size: 13px;
+		font-weight: 600;
+		cursor: pointer;
+		transition: background 0.15s ease;
+
+		&:hover {
+			background: var(--optset-c-primary-hover);
+		}
+
+		.dashicons {
+			font-size: 16px;
+			width: 16px;
+			height: 16px;
+		}
+	}
+}
+
+.optset-formula-vars {
+	&__title {
+		font-size: 12px;
+		font-weight: 600;
+		display: block;
+		margin-block-end: 6px;
+	}
+
+	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px;
+	}
+}
+
+.optset-token {
+	border: 1px solid $optset-border;
+	background: $optset-surface-2;
+	border-radius: 4px;
+	padding: 3px 6px;
+	font-size: 11px;
+	font-family: Menlo, Consolas, monospace;
+	cursor: pointer;
+
+	&:hover {
+		border-color: $optset-accent;
+	}
+}

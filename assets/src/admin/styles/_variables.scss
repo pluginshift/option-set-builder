@@ -1,0 +1,116 @@
+/**
+ * Option Set Builder Admin — SCSS token bridge.
+ *
+ * Historically every screen declared its own colour palette. This file is now
+ * the *bridge* between legacy SCSS variable names and the centralized Global
+ * Theme System (`_theme.scss`). Each token below resolves to a `var(--…)`
+ * reference with a hex fallback, so:
+ *
+ *   • Changing a token in `_theme.scss` (or switching `data-optset-theme`) cascades
+ *     to every screen, button, card, modal, input, table and tab automatically.
+ *   • Existing styles compile unchanged — no per-file rewrite required.
+ *
+ * Two narrow exceptions:
+ *   • `rgba($var, .12)` callsites are evaluated at compile time, so the SCSS
+ *     value for those tokens must be a real colour. We expose both forms:
+ *     a `var()` reference for solid uses and a `*-fallback` raw hex for the
+ *     rare rgba() math. Prefer `rgba(var(--optset-c-primary-rgb), .12)` in any
+ *     new code so the alpha tint also follows the active theme.
+ *   • Maps / lists (`$optset-an-tones`, `$optset-os-avatars`) and the font stack
+ *     stay as Sass literals — they aren't colours that need theming.
+ */
+
+/* ─── Brand / primary ──────────────────────────────────────────────────── */
+$optset-c-primary-fallback:       #059669;
+$optset-c-primary-hover-fallback: #047857;
+
+/* ─── Surfaces ─────────────────────────────────────────────────────────── */
+$optset-bg:            var(--optset-c-bg, #f7f8fb);
+$optset-surface:       var(--optset-c-surface, #ffffff);
+$optset-surface-2:     var(--optset-c-surface-2, #f6f7f9);
+$optset-border:        var(--optset-c-border, #eceef3);
+$optset-border-strong: var(--optset-c-border-strong, #dfe3ea);
+$optset-text:          var(--optset-c-ink, #0f172a);
+$optset-text-muted:    var(--optset-c-muted, #64748b);
+
+/* ─── Brand-mapped legacy aliases (used widely as solid colours) ───────── */
+$optset-accent:        var(--optset-c-primary, #{$optset-c-primary-fallback});
+$optset-accent-hover:  var(--optset-c-primary-hover, #{$optset-c-primary-hover-fallback});
+
+/* ─── Semantic ─────────────────────────────────────────────────────────── */
+$optset-danger:        var(--optset-c-danger, #ef4444);
+$optset-danger-hover:  #c53030;
+$optset-success:       var(--optset-c-success, #10b981);
+$optset-warning:       var(--optset-c-warning, #f59e0b);
+
+/* ─── Radius / spacing ─────────────────────────────────────────────────── */
+$optset-radius:    var(--optset-r-sm, 6px);
+$optset-radius-lg: var(--optset-r-md, 10px);
+$optset-radius-xl: var(--optset-r-lg, 14px);
+$optset-space:     var(--optset-s-4, 16px);
+$optset-space-sm:  var(--optset-s-2, 8px);
+$optset-space-lg:  var(--optset-s-6, 24px);
+
+/* ─── Option Sets palette (token-driven for the rest of the admin) ─────── */
+$optset-os-bg:            var(--optset-c-bg, #f7f8fb);
+$optset-os-surface:       var(--optset-c-surface, #ffffff);
+$optset-os-border:        var(--optset-c-border, #eceef3);
+$optset-os-border-strong: var(--optset-c-border-strong, #dfe3ea);
+$optset-os-ink:           var(--optset-c-ink, #0f172a);
+$optset-os-ink-soft:      var(--optset-c-ink-soft, #334155);
+$optset-os-muted:         var(--optset-c-muted, #64748b);
+$optset-os-faint:         var(--optset-c-faint, #94a3b8);
+
+/* `rgba($optset-os-blue, .x)` is used in places — keep a hex fallback usable
+   by Sass colour functions, but expose a CSS-var solid form for paint. */
+$optset-os-blue:          var(--optset-c-primary, #{$optset-c-primary-fallback});
+$optset-os-blue-hover:    var(--optset-c-primary-hover, #{$optset-c-primary-hover-fallback});
+$optset-os-blue-soft:     var(--optset-c-primary-soft, #d1fae5);
+
+$optset-os-green:         var(--optset-c-success, #16a34a);
+$optset-os-green-soft:    var(--optset-c-success-soft, #dcfce7);
+$optset-os-track:         var(--optset-c-surface-3, #eef1f6);
+$optset-os-row-hover:     var(--optset-c-row-hover, #f8fafc);
+$optset-os-danger:        var(--optset-c-danger, #ef4444);
+$optset-os-danger-soft:   var(--optset-c-danger-soft, #fdeaea);
+
+$optset-os-shadow:        var(--optset-sh-1,
+						0 1px 2px rgba(15, 23, 42, 0.04),
+						0 1px 3px rgba(15, 23, 42, 0.06));
+$optset-os-ring:          var(--optset-sh-ring, 0 0 0 3px rgba(5, 150, 105, 0.20));
+
+/* Initials-tile palette — unrelated to theming. */
+$optset-os-avatars: #6366f1, #0ea5e9, #f59e0b, #10b981, #ec4899, #8b5cf6,
+	#ef4444, #14b8a6;
+
+/* ─── Analytics palette ────────────────────────────────────────────────── */
+$optset-an-blue:       var(--optset-c-primary, #{$optset-c-primary-fallback});
+$optset-an-blue-soft:  var(--optset-c-primary-soft, #d1fae5);
+$optset-an-purple:     #8b5cf6;
+$optset-an-purple-soft:#f3eefe;
+$optset-an-pink:       #ec4899;
+$optset-an-pink-soft:  #fdeef7;
+$optset-an-green:      var(--optset-c-success, #16a34a);
+$optset-an-green-soft: var(--optset-c-success-soft, #e6f7ee);
+
+/* Sass map for `@each` colour rotation — needs real Sass colour values so
+   that `rgba($solid, …)` math inside the loop still works. */
+$optset-an-tones: (
+	"blue":   $optset-c-primary-fallback #eef1fe,
+	"purple": #8b5cf6                 #f3eefe,
+	"pink":   #ec4899                 #fdeef7,
+	"green":  #16a34a                 #e6f7ee,
+);
+
+/* ─── Layout primitives ────────────────────────────────────────────────── */
+$optset-sidebar-w: 220px;
+$optset-topbar-h:  48px;
+$optset-shadow:    var(--optset-sh-1, 0 1px 2px rgba(0, 0, 0, 0.08));
+$optset-shadow-lg: var(--optset-sh-3, 0 8px 30px rgba(0, 0, 0, 0.16));
+
+/* ─── Pro / upsell ─────────────────────────────────────────────────────── */
+$optset-pro: #8b5cf6;
+
+/* ─── Typography (font stack stays a Sass literal) ─────────────────────── */
+$optset-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+	Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;

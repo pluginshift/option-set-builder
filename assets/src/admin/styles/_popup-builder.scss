@@ -1,0 +1,410 @@
+/* ================================================================ */
+/* Popup Builder — rich-text editor (TipTap) inside the settings      */
+/* drawer's Popup config + its launch modal.                          */
+/* ================================================================ */
+
+/* Inspector launch button. */
+.optset-popupcfg__launch {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	width: 100%;
+	justify-content: center;
+}
+
+/* Editor shell. */
+.optset-rte {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid $optset-border;
+	border-radius: $optset-radius;
+	background: $optset-surface;
+	overflow: hidden;
+	min-height: 360px;
+}
+
+/* --- Toolbar --------------------------------------------------- */
+.optset-rte__toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 2px;
+	padding: 8px;
+	background: $optset-surface-2;
+	border-block-end: 1px solid $optset-border;
+	position: sticky;
+	inset-block-start: 0;
+	z-index: 2;
+}
+
+.optset-rte__group {
+	display: flex;
+	align-items: center;
+	gap: 2px;
+
+	&--end {
+		margin-inline-start: auto;
+	}
+}
+
+.optset-rte__sep {
+	width: 1px;
+	align-self: stretch;
+	margin: 2px 6px;
+	background: $optset-border;
+}
+
+.optset-rte__btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	border: 1px solid transparent;
+	border-radius: $optset-radius;
+	background: transparent;
+	color: $optset-text;
+	cursor: pointer;
+	transition: background 0.12s, color 0.12s, border-color 0.12s;
+
+	&:hover:not( :disabled ) {
+		background: rgba(var(--optset-c-primary-rgb), 0.1 );
+		border-color: rgba(var(--optset-c-primary-rgb), 0.25 );
+	}
+
+	&.is-active {
+		background: $optset-accent;
+		border-color: $optset-accent;
+		color: #fff;
+	}
+
+	&:disabled {
+		opacity: 0.4;
+		cursor: not-allowed;
+	}
+
+	&.is-danger:hover:not( :disabled ) {
+		background: rgba(var(--optset-c-danger-rgb), 0.12 );
+		border-color: rgba(var(--optset-c-danger-rgb), 0.3 );
+		color: $optset-danger;
+	}
+}
+
+/* --- Contextual table toolbar ---------------------------------- */
+.optset-rte__tablebar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 2px;
+	padding: 6px 8px;
+	background: rgba(var(--optset-c-primary-rgb), 0.06 );
+	border-block-end: 1px solid $optset-border;
+}
+
+.optset-rte__tablebar-label {
+	font-size: 11px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: $optset-accent;
+	margin-inline-end: 6px;
+}
+
+.optset-rte__tbtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	padding: 0;
+	border: 1px solid transparent;
+	border-radius: $optset-radius;
+	background: transparent;
+	color: $optset-text;
+	cursor: pointer;
+
+	&:hover {
+		background: rgba(var(--optset-c-primary-rgb), 0.12 );
+	}
+
+	&.is-danger:hover {
+		background: rgba(var(--optset-c-danger-rgb), 0.12 );
+		color: $optset-danger;
+	}
+}
+
+/* --- Link bar -------------------------------------------------- */
+.optset-rte__linkbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	padding: 8px;
+	background: $optset-surface-2;
+	border-block-end: 1px solid $optset-border;
+}
+
+.optset-rte__linkinput {
+	flex: 1 1 220px;
+	min-width: 0;
+	height: 32px;
+	padding: 0 10px;
+	border: 1px solid $optset-border-strong;
+	border-radius: $optset-radius;
+	font-size: 13px;
+}
+
+.optset-rte__linkcheck {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 12px;
+	color: $optset-text-muted;
+	white-space: nowrap;
+}
+
+/* --- Editable surface ------------------------------------------ */
+.optset-rte__surface {
+	flex: 1;
+	overflow: auto;
+	max-height: 56vh;
+}
+
+.optset-rte__content {
+	min-height: 280px;
+	padding: 18px 22px;
+	outline: none;
+	color: $optset-text;
+	font-size: 14px;
+	line-height: 1.65;
+
+	&:focus {
+		outline: none;
+	}
+
+	> :first-child {
+		margin-block-start: 0;
+	}
+
+	h1 {
+		font-size: 1.9em;
+		line-height: 1.2;
+		margin: 0.6em 0 0.3em;
+	}
+	h2 {
+		font-size: 1.5em;
+		line-height: 1.25;
+		margin: 0.6em 0 0.3em;
+	}
+	h3 {
+		font-size: 1.25em;
+		line-height: 1.3;
+		margin: 0.6em 0 0.3em;
+	}
+
+	p {
+		margin: 0 0 0.75em;
+	}
+
+	ul,
+	ol {
+		margin: 0 0 0.75em;
+		padding-inline-start: 1.6em;
+	}
+
+	li {
+		margin: 0.2em 0;
+	}
+
+	a {
+		color: $optset-accent;
+		text-decoration: underline;
+	}
+
+	mark {
+		background: #fff3a3;
+		padding: 0 2px;
+		border-radius: 2px;
+	}
+
+	img {
+		max-width: 100%;
+		height: auto;
+		border-radius: $optset-radius;
+	}
+
+	/* Dynamic tables. */
+	table {
+		border-collapse: collapse;
+		width: 100%;
+		margin: 0.75em 0;
+
+		td,
+		th {
+			border: 1px solid $optset-border-strong;
+			padding: 8px 10px;
+			vertical-align: top;
+			position: relative;
+			min-width: 1em;
+		}
+
+		th {
+			background: $optset-surface-2;
+			font-weight: 600;
+			text-align: start;
+		}
+
+		/* Cell currently selected for a table op. */
+		.selectedCell::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: rgba(var(--optset-c-primary-rgb), 0.12 );
+			pointer-events: none;
+		}
+	}
+}
+
+/* ProseMirror placeholder + selection chrome. */
+.optset-rte__surface .ProseMirror-selectednode {
+	outline: 2px solid $optset-accent;
+	outline-offset: 1px;
+}
+
+/* --- HTML source view ------------------------------------------ */
+.optset-rte__source {
+	width: 100%;
+	min-height: 320px;
+	max-height: 56vh;
+	border: 0;
+	padding: 16px 18px;
+	font-family: Menlo, Consolas, monospace;
+	font-size: 12.5px;
+	line-height: 1.6;
+	resize: vertical;
+	color: $optset-text;
+	background: #fbfbfc;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+/* --- Responsive ------------------------------------------------ */
+@media ( max-width: 600px ) {
+	.optset-rte__toolbar {
+		gap: 1px;
+		padding: 6px;
+	}
+
+	.optset-rte__sep {
+		margin: 2px 3px;
+	}
+
+	.optset-rte__btn {
+		width: 28px;
+		height: 28px;
+	}
+
+	.optset-rte__content {
+		padding: 14px 16px;
+	}
+}
+
+/* ================================================================ */
+/* Popup Builder — live preview (mirrors the storefront popup so the  */
+/* builder matches the frontend: corner close button + open anim).    */
+/* ================================================================ */
+
+@keyframes optset-pp-backdrop-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes optset-pp-box-in {
+	from {
+		opacity: 0;
+		transform: translateY(14px) scale(0.94);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+/* Push the Preview button to the left of the modal footer. */
+.optset-popupcfg__foot-preview {
+	margin-inline-end: auto;
+}
+
+.optset-pp-preview {
+	position: fixed;
+	inset: 0;
+	z-index: 100002; /* above .optset-modal-overlay (100000) */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&__backdrop {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.55);
+		animation: optset-pp-backdrop-in 0.25s ease both;
+		cursor: pointer;
+	}
+
+	&__box {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		width: 90%;
+		max-width: 640px;
+		max-height: 85vh;
+		padding: 24px;
+		background: #fff;
+		border-radius: $optset-radius-lg;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+		animation: optset-pp-box-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
+
+	&__close {
+		position: absolute;
+		inset-block-start: -16px;
+		inset-inline-end: -16px;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		border: 2px solid #e23b3b;
+		border-radius: 50%;
+		background: #fff;
+		color: #e23b3b;
+		font-size: 20px;
+		line-height: 1;
+		cursor: pointer;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+		transition: background 0.15s, color 0.15s, transform 0.15s;
+
+		&:hover {
+			background: #e23b3b;
+			color: #fff;
+			transform: scale(1.06);
+		}
+	}
+
+	/* Reuse the editor's rich typography; drop its editing affordances. */
+	&__content {
+		flex: 1 1 auto;
+		min-height: 0;
+		overflow-y: auto;
+		padding: 0;
+	}
+}

@@ -1,0 +1,237 @@
+/**
+ * PageFrame — uniform screen chrome shared by every top-level screen.
+ *
+ * Provides a consistent title row, a toolbar slot for filters/search/bulk
+ * actions, and a padded body container. All measurements are theme-token
+ * based so screens stay pixel-aligned across the admin SPA.
+ */
+
+.optset-page {
+	max-width: 1400px;
+	margin-inline: auto;
+	padding: var(--optset-s-6) var(--optset-s-6) var(--optset-s-8);
+	font-family: var(--optset-font);
+	color: var(--optset-c-ink);
+
+	/* ── Head (title + actions) ─────────────────────────────────────── */
+	&__head {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		gap: var(--optset-s-4);
+		flex-wrap: wrap;
+		margin-block-end: var(--optset-s-6);
+	}
+
+	&__titles {
+		min-width: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	&__title {
+		margin: 0;
+		font-size: 24px;
+		font-weight: 700;
+		line-height: 1.15;
+		letter-spacing: -0.01em;
+		color: var(--optset-c-ink);
+	}
+
+	&__sub {
+		margin: 0;
+		font-size: 14px;
+		color: var(--optset-c-muted);
+		line-height: 1.5;
+	}
+
+	&__actions {
+		display: flex;
+		align-items: center;
+		gap: var(--optset-s-3);
+		flex-shrink: 0;
+	}
+
+	&__unsaved {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 13px;
+		font-weight: 600;
+		color: var(--optset-c-warning);
+
+		&::before {
+			content: '';
+			inline-size: 8px;
+			block-size: 8px;
+			border-radius: 50%;
+			background: var(--optset-c-warning);
+		}
+	}
+
+	/* ── Toolbar (search + filters + bulk action) ───────────────────── */
+	&__toolbar {
+		// display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--optset-s-3);
+		flex-wrap: wrap;
+		margin-block-end: var(--optset-s-5);
+		padding: var(--optset-s-3) var(--optset-s-4);
+		background: var(--optset-c-surface-2);
+		border: 1px solid var(--optset-c-border);
+		border-radius: var(--optset-r-md);
+	}
+
+	/* ── Body ───────────────────────────────────────────────────────── */
+	&__body {
+		display: flex;
+		flex-direction: column;
+		gap: var(--optset-s-5);
+
+		&--bleed { padding: 0; }
+	}
+}
+
+/* ── Generic page-level button + select primitives ──────────────────── */
+/* These get a `pg-` prefix so they never collide with existing
+   `.optset-btn` / `.optset-input` style islands used by other components. */
+
+.optset-pg-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--optset-s-2);
+	min-height: 36px;
+	padding: 0 var(--optset-s-4);
+	border: 1px solid var(--optset-c-border-strong);
+	border-radius: var(--optset-r-md);
+	background: var(--optset-c-surface);
+	color: var(--optset-c-ink);
+	font: 600 13px/1 var(--optset-font);
+	text-decoration: none;
+	cursor: pointer;
+	box-shadow: var(--optset-sh-1);
+	transition:
+		border-color var(--optset-dur) var(--optset-ease),
+		color var(--optset-dur) var(--optset-ease),
+		background var(--optset-dur) var(--optset-ease),
+		box-shadow var(--optset-dur) var(--optset-ease),
+		transform var(--optset-dur) var(--optset-ease);
+
+	&:hover:not(:disabled) {
+		border-color: var(--optset-c-primary);
+		color: var(--optset-c-primary);
+		box-shadow: var(--optset-sh-2);
+		transform: translateY(-1px);
+	}
+
+	&:focus-visible {
+		outline: none;
+		box-shadow: var(--optset-sh-ring);
+	}
+
+	&:disabled {
+		opacity: 0.55;
+		cursor: not-allowed;
+	}
+
+	&--primary {
+		background: var(--optset-c-primary);
+		border-color: var(--optset-c-primary);
+		color: var(--optset-c-primary-ink);
+		box-shadow:
+			0 1px 2px rgba(var(--optset-c-primary-rgb), 0.25),
+			0 4px 14px rgba(var(--optset-c-primary-rgb), 0.20);
+
+		&:hover:not(:disabled) {
+			background: var(--optset-c-primary-hover);
+			border-color: var(--optset-c-primary-hover);
+			color: var(--optset-c-primary-ink);
+		}
+	}
+
+	&--danger {
+		color: var(--optset-c-danger);
+		border-color: var(--optset-c-border-strong);
+
+		&:hover:not(:disabled) {
+			background: rgba(var(--optset-c-danger-rgb), 0.08);
+			border-color: var(--optset-c-danger);
+			color: var(--optset-c-danger);
+		}
+	}
+
+	&--ghost {
+		background: transparent;
+		border-color: transparent;
+		box-shadow: none;
+
+		&:hover:not(:disabled) {
+			background: var(--optset-c-primary-soft);
+			border-color: transparent;
+			color: var(--optset-c-primary);
+			box-shadow: none;
+		}
+	}
+
+	&--icon {
+		width: 36px;
+		padding: 0;
+
+		svg { display: block; }
+	}
+}
+
+.optset-pg-select,
+.optset-pg-search {
+	display: inline-flex;
+	align-items: center;
+	min-height: 36px;
+	padding: 8px 12px;
+	border: 1px solid var(--optset-c-border-strong);
+	border-radius: var(--optset-r-md);
+	background: var(--optset-c-surface);
+	color: var(--optset-c-ink);
+	font: 13px/1.4 var(--optset-font);
+	transition:
+		border-color var(--optset-dur) var(--optset-ease),
+		box-shadow var(--optset-dur) var(--optset-ease);
+
+	&::placeholder { color: var(--optset-c-faint); }
+	&:hover { border-color: var(--optset-c-primary); }
+	&:focus,
+	&:focus-visible {
+		outline: none;
+		border-color: var(--optset-c-primary);
+		box-shadow: var(--optset-sh-ring);
+	}
+}
+
+.optset-pg-search { min-inline-size: 240px; }
+.optset-pg-select { min-inline-size: 160px; appearance: none; padding-inline-end: 32px;
+	background-image: linear-gradient(45deg, transparent 50%, var(--optset-c-muted) 50%),
+					 linear-gradient(135deg, var(--optset-c-muted) 50%, transparent 50%);
+	background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+	background-size: 5px 5px;
+	background-repeat: no-repeat; }
+
+.optset-pg-toolbar-group {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--optset-s-2);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+	.optset-page {
+		padding: var(--optset-s-4);
+
+		&__head { margin-block-end: var(--optset-s-4); }
+		&__title { font-size: 20px; }
+		&__toolbar { padding: var(--optset-s-2) var(--optset-s-3); }
+	}
+
+	.optset-pg-search { min-inline-size: 0; flex: 1; }
+}

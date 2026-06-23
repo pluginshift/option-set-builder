@@ -1,0 +1,214 @@
+/* Centered field-type picker (Radix Dialog, portaled to <body>). Selectors
+ * live at the root — not under .optset-app — because the portal renders outside
+ * the app subtree. Token-driven for dark-mode parity. */
+
+.optset-picker__overlay {
+	position: fixed;
+	inset: 0;
+	background: var(--optset-c-overlay);
+	backdrop-filter: blur(4px);
+	z-index: 100000;
+}
+
+/* Positioning layer: dead-centers the panel via flexbox so framer-motion is
+ * free to own the panel's `transform` (scale/translate) for the animation
+ * without fighting a centering translate. */
+.optset-picker__wrap {
+	position: fixed;
+	inset: 0;
+	z-index: 100001;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	pointer-events: none;
+}
+
+.optset-picker {
+	pointer-events: auto;
+	width: min(680px, 100%);
+	max-height: min(580px, calc(100vh - 48px));
+	background: var(--optset-c-surface);
+	border: 1px solid var(--optset-c-border);
+	border-radius: var(--optset-c-radius-lg);
+	box-shadow: var(--optset-c-shadow-lg), 0 0 0 1px rgba(0, 0, 0, 0.02);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	transform-origin: center;
+	will-change: transform, opacity;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.optset-picker__cmd {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+}
+
+.optset-picker__head {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 14px 16px;
+	border-block-end: 1px solid var(--optset-c-border);
+	background: var(--optset-c-surface-2);
+}
+
+.optset-picker__search {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 0 4px;
+}
+
+.optset-picker__search-icon {
+	color: var(--optset-c-muted);
+	flex: none;
+}
+
+.optset-picker__input {
+	flex: 1;
+	border: none;
+	background: none;
+	outline: none;
+	font-size: 15px;
+	color: var(--optset-c-ink);
+
+	&::placeholder {
+		color: var(--optset-c-muted);
+	}
+}
+
+.optset-picker__close {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	border: none;
+	background: var(--optset-c-surface-2);
+	border-radius: 8px;
+	color: var(--optset-c-ink-soft);
+	cursor: pointer;
+
+	&:hover {
+		background: var(--optset-c-surface-3);
+		color: var(--optset-c-ink);
+	}
+}
+
+.optset-picker__list {
+	overflow-y: auto;
+	padding: 8px;
+	min-height: 0;
+}
+
+.optset-picker__empty {
+	padding: 32px;
+	text-align: center;
+	color: var(--optset-c-muted);
+	font-size: 13px;
+}
+
+.optset-picker__group {
+	margin-block-end: 6px;
+
+	[cmdk-group-heading] {
+		padding: 10px 8px 6px;
+	}
+}
+
+.optset-picker__cat {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--optset-c-muted);
+}
+
+.optset-picker__group [cmdk-group-items] {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 6px;
+}
+
+.optset-picker__item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 12px;
+	border-radius: var(--optset-c-radius-sm);
+	cursor: pointer;
+	color: var(--optset-c-ink);
+	border: 1px solid transparent;
+	transition: background 0.15s ease, border-color 0.15s ease,
+		transform 0.15s ease, box-shadow 0.15s ease;
+
+	&[data-selected='true'] {
+		background: var(--optset-c-primary-soft);
+		border-color: var(--optset-c-primary);
+		box-shadow: 0 2px 8px var(--optset-c-primary-soft);
+
+		.optset-picker__item-icon {
+			background: var(--optset-c-primary);
+			color: #fff;
+		}
+	}
+
+	&:hover {
+		background: var(--optset-c-surface-2);
+		transform: translateY(-1px);
+	}
+
+	&:active {
+		transform: translateY(0);
+	}
+
+	&.is-locked {
+		opacity: 0.55;
+		cursor: not-allowed;
+	}
+}
+
+.optset-picker__item-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 34px;
+	height: 34px;
+	border-radius: 9px;
+	background: var(--optset-c-surface-2);
+	color: var(--optset-c-primary);
+	flex: none;
+	transition: background 0.15s ease, color 0.15s ease;
+}
+
+.optset-picker__item-label {
+	font-size: 13px;
+	font-weight: 600;
+	flex: 1;
+	min-width: 0;
+}
+
+.optset-picker__pro {
+	display: inline-flex;
+	align-items: center;
+	gap: 3px;
+	font-size: 10px;
+	font-weight: 700;
+	color: #8b5cf6;
+	background: #f3eefe;
+	padding: 2px 6px;
+	border-radius: 999px;
+}
+
+@media (max-width: 600px) {
+	.optset-picker__group [cmdk-group-items] {
+		grid-template-columns: 1fr;
+	}
+}

@@ -1,0 +1,17 @@
+{
+    "name": "pluginshift/option-set-builder",
+    "description": "Option Set Builder.",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "OptionSetBuilder\\": "includes/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

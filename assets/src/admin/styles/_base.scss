@@ -1,0 +1,100 @@
+/* Reset-ish base scoped to the app root. */
+
+/*
+ * Strip the default WordPress admin chrome padding on our screen so the
+ * SPA can render edge-to-edge (slug: `optset-options`, body class added by
+ * core for the top-level page). Scoped to the body class so it never
+ * leaks to other admin pages.
+ */
+body.toplevel_page_optset-options {
+	#wpcontent {
+		padding-inline-start: 0;
+	}
+
+	#wpbody-content {
+		padding-bottom: 0;
+	}
+
+	.optset-admin-wrap {
+		margin: 0;
+	}
+}
+
+#optset-admin-root {
+	box-sizing: border-box;
+	color: $optset-text;
+	font-family: $optset-font;
+	font-size: 13px;
+	line-height: 1.5;
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: inherit;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		margin: 0;
+		font-weight: 600;
+		color: $optset-text;
+	}
+
+	p {
+		margin: 0 0 $optset-space-sm;
+	}
+
+	a {
+		color: $optset-accent;
+		text-decoration: none;
+
+		&:hover {
+			color: $optset-accent-hover;
+		}
+	}
+
+	pre {
+		margin: 0;
+	}
+
+	:focus-visible {
+		outline: 1px solid $optset-accent !important;
+		outline-offset: 1px;
+	}
+}
+
+.optset-visually-hidden,
+.screen-reader-text {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.optset-error {
+	color: $optset-danger;
+	font-weight: 500;
+}
+
+.optset-hint {
+	color: $optset-text-muted;
+	font-size: 12px;
+}
+
+.optset-codeblock {
+	background: $optset-surface-2;
+	border: 1px solid $optset-border;
+	border-radius: $optset-radius;
+	padding: $optset-space-sm;
+	font-family: Menlo, Consolas, monospace;
+	font-size: 12px;
+	white-space: pre-wrap;
+	word-break: break-all;
+}

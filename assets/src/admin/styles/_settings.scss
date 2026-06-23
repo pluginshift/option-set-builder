@@ -1,0 +1,843 @@
+/* ============================================================
+   Settings screen — sticky branded header, left section rail,
+   tinted content panel with reusable accent cards.
+   Self-contained (optset-set-* scope) so no other screen regresses.
+   Reuses the $optset-os-* surface tokens, restyles the shared
+   Field / TextControl / ToggleField in-scope only. Token-driven,
+   RTL-safe (logical properties), responsive and accessible.
+   ============================================================ */
+
+/* Accent quartet — soft tile bg + icon ink, per tone. */
+$optset-set-tones: (
+	"neutral": #eef0f4 #5b6472,
+	"violet": #ece9fe #6d4ff2,
+	"blue": #e7edff #3358f4,
+	"amber": #fff2d6 #c98a06,
+	"green": #e1f6ea #16a34a,
+	"teal": #d5f3ef #0d9488,
+	"pink": #fde6f0 #db2777,
+);
+
+/* Info-banner tones — bg / text / border. */
+$optset-set-banners: (
+	"blue": #eef2ff #4338ca #e2e6ff,
+	"amber": #fff8e8 #b4690e #fbe3b3,
+	"violet": #f4f1fe #6d28d9 #e7e1fb,
+	"teal": #ecfdf8 #0f766e #c7f0e8,
+	"pink": #fdeef4 #be185d #f8d7e6,
+);
+
+/* Settings palette — rebound to the Global Theme so the screen follows the
+   active brand colour instead of its own historical violet. */
+$optset-set-bg:         var(--optset-c-bg, #f7f8fb);
+$optset-set-violet:     var(--optset-c-primary, #{$optset-c-primary-fallback});
+$optset-set-violet-ink: var(--optset-c-primary-hover, #{$optset-c-primary-hover-fallback});
+$optset-set-card-bg:    var(--optset-c-surface-2, #fafbfc);
+$optset-set-card-bd:    var(--optset-c-border, #ecedf2);
+$optset-set-ring:       var(--optset-sh-ring, 0 0 0 3px rgba(5, 150, 105, 0.22));
+
+/* ---- Canvas ----------------------------------------------- */
+/* Settings now renders inside the unified PageFrame, so the screen no
+   longer needs a bleed margin or its own background. */
+.optset-set {
+	color: $optset-os-ink-soft;
+	font-size: 14px;
+	font-family: $optset-font;
+}
+
+/* ---- Accent icon tile (shared) ---------------------------- */
+.optset-set-tile {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 40px;
+	block-size: 40px;
+	border-radius: 12px;
+	flex-shrink: 0;
+
+	.dashicons {
+		font-size: 20px;
+		inline-size: 20px;
+		block-size: 20px;
+	}
+
+	&--lg {
+		inline-size: 48px;
+		block-size: 48px;
+		border-radius: 14px;
+
+		.dashicons {
+			font-size: 24px;
+			inline-size: 24px;
+			block-size: 24px;
+		}
+	}
+}
+
+@each $name, $pair in $optset-set-tones {
+	.optset-set-tile--#{$name} {
+		background: nth($pair, 1);
+		color: nth($pair, 2);
+	}
+}
+
+/* ---- Sticky header ---------------------------------------- */
+.optset-set-header {
+	position: sticky;
+	inset-block-start: 0;
+	z-index: 20;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: $optset-space-lg;
+	flex-wrap: wrap;
+	padding: 20px 32px;
+	background: $optset-os-surface;
+	border-block-end: 1px solid $optset-os-border;
+
+	&__brand {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		min-width: 0;
+	}
+
+	&__title {
+		font-size: 26px;
+		font-weight: 700;
+		line-height: 1.15;
+		color: $optset-os-ink;
+	}
+
+	&__sub {
+		margin: 4px 0 0;
+		font-size: 14px;
+		color: $optset-os-muted;
+	}
+
+	&__actions {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+	}
+
+	&__unsaved {
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
+		font-size: 13px;
+		font-weight: 600;
+		color: $optset-warning;
+
+		&::before {
+			content: "";
+			inline-size: 8px;
+			block-size: 8px;
+			border-radius: 50%;
+			background: $optset-warning;
+		}
+	}
+}
+
+/* ---- Primary save / upload button ------------------------- */
+.optset-set-save {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	height: 46px;
+	padding-inline: 24px;
+	border: 0;
+	border-radius: 12px;
+	background: linear-gradient(135deg, var(--optset-c-primary), var(--optset-c-primary-hover));
+	color: var(--optset-c-primary-ink, #fff);
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	white-space: nowrap;
+	box-shadow: 0 8px 18px rgba(var(--optset-c-primary-rgb), 0.35);
+	transition: filter 0.15s, box-shadow 0.15s, opacity 0.15s;
+
+	svg {
+		display: block;
+	}
+
+	&:hover:not(:disabled) {
+		filter: brightness(0.96);
+	}
+
+	&:focus-visible {
+		outline: none;
+		box-shadow: $optset-set-ring, 0 8px 18px rgba(var(--optset-c-primary-rgb), 0.35);
+	}
+
+	&:disabled {
+		opacity: 0.55;
+		box-shadow: none;
+		cursor: not-allowed;
+	}
+
+	&--sm {
+		height: 42px;
+		padding-inline: 20px;
+		font-size: 13.5px;
+		box-shadow: 0 4px 12px rgba(var(--optset-c-primary-rgb), 0.3);
+	}
+}
+
+/* ---- Body grid : rail + panel ----------------------------- */
+/* PageFrame supplies the outer padding now, so this just sets the
+   two-column geometry. */
+.optset-set__body {
+	display: grid;
+	grid-template-columns: 300px minmax(0, 1fr);
+	align-items: start;
+	gap: 24px;
+}
+
+/* ---- Section rail ----------------------------------------- */
+.optset-set-nav {
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		inline-size: 100%;
+		padding: 13px 16px;
+		border: 1px solid transparent;
+		border-radius: 14px;
+		background: transparent;
+		text-align: start;
+		cursor: pointer;
+		transition: background 0.15s, border-color 0.15s,
+			box-shadow 0.15s;
+
+		&:hover:not(.is-active) {
+			background: $optset-os-surface;
+			border-color: $optset-os-border;
+			box-shadow: $optset-os-shadow;
+		}
+
+		&.is-active {
+			background: var(--optset-c-primary-soft);
+			border-color: rgba(var(--optset-c-primary-rgb), 0.25);
+		}
+
+		&:focus-visible {
+			outline: none;
+			box-shadow: $optset-set-ring;
+		}
+	}
+
+	&__text {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		min-width: 0;
+	}
+
+	&__title {
+		font-size: 14px;
+		font-weight: 600;
+		color: $optset-os-ink;
+
+		.is-active & {
+			color: $optset-set-violet-ink;
+		}
+	}
+
+	&__sub {
+		font-size: 12.5px;
+		color: $optset-os-muted;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		.is-active & {
+			color: rgba(var(--optset-c-primary-hover-rgb), 0.75);
+		}
+	}
+
+	&__chev {
+		margin-inline-start: auto;
+		font-size: 18px;
+		inline-size: 18px;
+		block-size: 18px;
+		color: $optset-os-faint;
+		flex-shrink: 0;
+
+		.is-active & {
+			color: $optset-set-violet-ink;
+		}
+	}
+}
+
+/* ---- Content panel ---------------------------------------- */
+.optset-set-panel {
+	background: $optset-os-surface;
+	border: 1px solid $optset-os-border;
+	border-radius: 18px;
+	box-shadow: $optset-os-shadow;
+	padding: 28px 32px 32px;
+
+	&__head {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+	}
+
+	&__title {
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 1.2;
+		color: $optset-os-ink;
+	}
+
+	&__sub {
+		margin: 3px 0 0;
+		font-size: 14px;
+		color: $optset-os-muted;
+	}
+
+	&__divider {
+		block-size: 1px;
+		background: $optset-os-border;
+		margin: 22px 0;
+	}
+}
+
+/* ---- Info banner ------------------------------------------ */
+.optset-set-banner {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	margin: 0 0 24px;
+	padding: 14px 18px;
+	border-radius: 12px;
+	font-size: 13.5px;
+	font-weight: 500;
+	line-height: 1.5;
+
+	.dashicons {
+		font-size: 18px;
+		inline-size: 18px;
+		block-size: 18px;
+		flex-shrink: 0;
+		margin-block-start: 1px;
+	}
+}
+
+@each $name, $trio in $optset-set-banners {
+	.optset-set-banner--#{$name} {
+		background: nth($trio, 1);
+		color: nth($trio, 2);
+		border: 1px solid nth($trio, 3);
+	}
+}
+
+/* ---- Layout helpers --------------------------------------- */
+.optset-set-grid {
+	display: grid;
+	gap: 20px;
+
+	&--2 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	&--3 {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+.optset-set-stack {
+	display: flex;
+	flex-direction: column;
+	gap: 22px;
+}
+
+.optset-set-state {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 56px 24px;
+}
+
+/* ---- Setting sub-card ------------------------------------- */
+.optset-set-card {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	padding: 24px;
+	background: $optset-os-surface;
+	border: 1px solid $optset-set-card-bd;
+	border-radius: 14px;
+	box-shadow: var(--optset-sh-1);
+	transition: all 0.2s ease;
+
+	&:hover {
+		border-color: $optset-set-violet;
+		box-shadow: var(--optset-sh-2);
+		background: linear-gradient(135deg, rgba(5, 150, 105, 0.01) 0%, rgba(5, 150, 105, 0.005) 100%);
+	}
+
+	&__head {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	&__heading {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		min-width: 0;
+	}
+
+	&__title {
+		font-size: 16px;
+		font-weight: 700;
+		color: $optset-os-ink;
+		letter-spacing: -0.3px;
+	}
+
+	&__sub {
+		margin: 0;
+		font-size: 13px;
+		color: $optset-os-muted;
+		line-height: 1.4;
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	&__hint {
+		margin: 0;
+		font-size: 13px;
+		color: $optset-os-muted;
+		padding-block-start: 4px;
+		border-block-start: 1px solid var(--optset-c-border-soft);
+		line-height: 1.5;
+	}
+}
+
+/* ---- Switch row (label left / toggle right) --------------- */
+.optset-set-switchrow {
+	.optset-toggle {
+		inline-size: 100%;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		gap: 16px;
+		font-size: 14px;
+	}
+
+	.optset-toggle__label {
+		flex: 1;
+		font-size: 14px;
+		font-weight: 500;
+		color: $optset-os-ink-soft;
+	}
+}
+
+/* ---- Shared-control restyle (scoped to .optset-set) ---------- */
+.optset-set {
+	.optset-form-field {
+		gap: 6px;
+	}
+
+	.optset-form-field__label {
+		font-size: 13px;
+		font-weight: 600;
+		color: $optset-os-ink-soft;
+	}
+
+	.optset-form-field__help {
+		font-size: 12px;
+		color: $optset-os-muted;
+	}
+
+	.optset-input {
+		height: 44px;
+		padding: 0 14px;
+		border: 1px solid #e4e6ee;
+		border-radius: 10px;
+		background: #f7f8fc;
+		color: $optset-os-ink;
+		font-size: 14px;
+
+		&::placeholder {
+			color: $optset-os-faint;
+		}
+
+		&:focus {
+			border-color: $optset-set-violet;
+			background: $optset-os-surface;
+			box-shadow: $optset-set-ring;
+		}
+	}
+
+	textarea.optset-input {
+		height: auto;
+		padding: 10px 14px;
+	}
+
+	/* Toggle — slightly larger, violet when on. */
+	.optset-toggle__track {
+		inline-size: 42px;
+		block-size: 24px;
+	}
+
+	.optset-toggle__thumb {
+		inline-size: 20px;
+		block-size: 20px;
+	}
+
+	.optset-toggle__input:checked + .optset-toggle__track {
+		background: $optset-set-violet;
+
+		.optset-toggle__thumb {
+			inset-inline-start: 20px;
+		}
+	}
+
+	.optset-toggle__input:focus-visible + .optset-toggle__track {
+		box-shadow: $optset-set-ring;
+	}
+}
+
+/* ---- Font upload form ------------------------------------- */
+.optset-set-fontform {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr auto;
+	align-items: end;
+	gap: 16px;
+}
+
+.optset-set-file {
+	position: relative;
+
+	&__input {
+		position: absolute;
+		inline-size: 1px;
+		block-size: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
+
+	&__btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		inline-size: 100%;
+		height: 46px;
+		padding: 0 16px;
+		border: 1px solid var(--optset-c-border);
+		border-radius: 11px;
+		background: $optset-os-surface;
+		color: $optset-os-muted;
+		font-size: 14px;
+		font-weight: 500;
+		cursor: pointer;
+		transition: all 0.15s ease;
+		box-shadow: var(--optset-sh-1);
+
+		.dashicons {
+			font-size: 18px;
+			inline-size: 18px;
+			block-size: 18px;
+			flex-shrink: 0;
+		}
+
+		&:hover {
+			border-color: $optset-set-violet;
+			color: $optset-set-violet;
+			box-shadow: var(--optset-sh-2);
+			background: linear-gradient(135deg, rgba(5, 150, 105, 0.01) 0%, rgba(5, 150, 105, 0) 100%);
+		}
+
+		&:focus-visible {
+			outline: none;
+			border-color: $optset-set-violet;
+			box-shadow: $optset-set-ring, var(--optset-sh-2);
+		}
+	}
+
+	&__name {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+
+/* ---- Uploaded fonts --------------------------------------- */
+.optset-set-fonts {
+	&__title {
+		margin: 0 0 12px;
+		font-size: 15px;
+		font-weight: 700;
+		color: $optset-os-ink;
+	}
+
+	&__empty {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 6px;
+		padding: 48px 24px;
+		border: 1px dashed #d8dbe4;
+		border-radius: 14px;
+		background: $optset-set-card-bg;
+		text-align: center;
+	}
+
+	&__emptyicon {
+		font-size: 44px;
+		inline-size: 44px;
+		block-size: 44px;
+		color: #c4c8d4;
+	}
+
+	&__emptytitle {
+		margin: 0;
+		font-size: 14px;
+		font-weight: 600;
+		color: $optset-os-muted;
+	}
+
+	&__emptysub {
+		margin: 0;
+		font-size: 13px;
+		color: $optset-os-faint;
+	}
+}
+
+.optset-set-fontlist {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.optset-set-fontrow {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px 16px;
+	padding: 20px 24px;
+	background: $optset-os-surface;
+	border: 1px solid $optset-set-card-bd;
+	border-radius: 14px;
+	box-shadow: var(--optset-sh-1);
+	transition: all 0.2s ease;
+
+	&:hover {
+		border-color: $optset-set-violet;
+		box-shadow: var(--optset-sh-2);
+		background: linear-gradient(135deg, rgba(5, 150, 105, 0.02) 0%, rgba(5, 150, 105, 0.01) 100%);
+	}
+
+	&__sample {
+		flex: 1 1 100%;
+		padding-block-start: 14px;
+		padding-block-end: 0;
+		margin-block-start: 8px;
+		border-block-start: 1px solid var(--optset-c-border-soft);
+		font-size: 22px;
+		line-height: 1.5;
+		color: $optset-os-ink;
+		font-weight: 500;
+	}
+
+	&__name {
+		flex: 1 1 auto;
+		min-width: 0;
+		font-size: 15px;
+		font-weight: 700;
+		color: $optset-os-ink;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		letter-spacing: -0.3px;
+	}
+
+	&__meta {
+		flex: 0 1 auto;
+		min-width: 0;
+		font-size: 13px;
+		color: $optset-os-muted;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		background: var(--optset-c-surface-2);
+		padding: 6px 12px;
+		border-radius: 8px;
+		border: 1px solid var(--optset-c-border-soft);
+	}
+
+	&__type {
+		padding: 5px 12px;
+		border-radius: 6px;
+		background: var(--optset-c-primary-soft);
+		color: $optset-set-violet;
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+		flex: 0 0 auto;
+	}
+
+	&--editing {
+		align-items: flex-end;
+		flex-wrap: wrap;
+		background: linear-gradient(135deg, rgba(5, 150, 105, 0.04) 0%, rgba(5, 150, 105, 0.02) 100%);
+		border: 2px solid $optset-set-violet;
+	}
+}
+
+/* Inline edit form within a font row. */
+.optset-set-fontedit {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+	flex: 1 1 100%;
+
+	&__actions {
+		display: flex;
+		gap: 10px;
+		align-items: center;
+		flex: 1 1 100%;
+		margin-block-start: 8px;
+	}
+}
+
+.optset-set-iconbtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	inline-size: 40px;
+	block-size: 40px;
+	border: 1px solid transparent;
+	border-radius: 10px;
+	background: var(--optset-c-surface-2);
+	color: $optset-os-muted;
+	cursor: pointer;
+	transition: all 0.15s ease;
+
+	.dashicons {
+		font-size: 18px;
+		inline-size: 18px;
+		block-size: 18px;
+	}
+
+	&:hover {
+		background: var(--optset-c-border);
+		color: $optset-os-ink-soft;
+		transform: translateY(-1px);
+	}
+
+	&--danger:hover {
+		background: $optset-os-danger-soft;
+		color: $optset-os-danger;
+	}
+
+	&:focus-visible {
+		outline: none;
+		box-shadow: $optset-set-ring;
+	}
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+/* Laptop — tighten the rail. */
+@media (max-width: 1200px) {
+	.optset-set__body {
+		grid-template-columns: 260px minmax(0, 1fr);
+	}
+}
+
+/* Tablet — stack rail above the panel, fold the 3-up grid. */
+@media (max-width: 960px) {
+	.optset-set__body {
+		grid-template-columns: 1fr;
+		gap: 20px;
+	}
+
+	.optset-set-nav__list {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.optset-set-nav__item {
+		flex: 1 1 240px;
+	}
+
+	.optset-set-grid--3 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.optset-set-fontform {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+/* Cancel the outlet padding exactly (outlet → 16px at 600). */
+@media (max-width: 600px) {
+	.optset-set {
+		margin: -$optset-space;
+	}
+}
+
+/* Phone — single column everywhere. */
+@media (max-width: 782px) {
+	.optset-set-header {
+		padding: 16px 18px;
+		gap: 14px;
+	}
+
+	.optset-set-header__title {
+		font-size: 22px;
+	}
+
+	.optset-set-save {
+		margin-inline-start: auto;
+	}
+
+	.optset-set__body {
+		padding: 18px;
+	}
+
+	.optset-set-panel {
+		padding: 22px 18px 24px;
+	}
+
+	.optset-set-nav__item {
+		flex-basis: 100%;
+	}
+
+	.optset-set-grid--2,
+	.optset-set-grid--3,
+	.optset-set-fontform {
+		grid-template-columns: 1fr;
+	}
+
+	.optset-set-panel__title {
+		font-size: 18px;
+	}
+}

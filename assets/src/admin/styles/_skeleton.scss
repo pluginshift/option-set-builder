@@ -1,0 +1,421 @@
+/**
+ * Premium skeleton loaders.
+ *
+ * One animated `.optset-skel` block + a small set of composed layouts. Theme
+ * tokens drive every colour so the loaders automatically match the active
+ * Global Theme palette (and a future dark mode flip).
+ *
+ * The shimmer uses a translated linear-gradient mask. `prefers-reduced-motion`
+ * politely pauses the animation for users who opt out.
+ */
+
+#optset-admin-root {
+	/* Skeleton-specific tokens — derived from the theme so retinting the
+	   primary palette automatically reshades the loaders. */
+	--optset-skel-base:      var(--optset-c-surface-3);
+	--optset-skel-highlight: var(--optset-c-surface-2);
+	--optset-skel-sheen:     rgba(255, 255, 255, 0.65);
+	--optset-skel-radius:    var(--optset-r-sm);
+	--optset-skel-duration:  1400ms;
+}
+
+/* ── Base shimmer block ────────────────────────────────────────────── */
+.optset-skel {
+	display: block;
+	inline-size: 100%;
+	block-size: 12px;
+	border-radius: var(--optset-skel-radius);
+	background:
+		linear-gradient(
+			90deg,
+			var(--optset-skel-base) 0%,
+			var(--optset-skel-highlight) 30%,
+			var(--optset-skel-sheen) 50%,
+			var(--optset-skel-highlight) 70%,
+			var(--optset-skel-base) 100%
+		);
+	background-size: 220% 100%;
+	background-position: 100% 0;
+	animation: optset-skel-shimmer var(--optset-skel-duration) linear infinite;
+	will-change: background-position;
+}
+
+@keyframes optset-skel-shimmer {
+	0%   { background-position: 100% 0; }
+	100% { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.optset-skel {
+		animation: none;
+		background: var(--optset-skel-base);
+	}
+}
+
+/* ── Composed variants ──────────────────────────────────────────────── */
+
+/* Text cluster ----------------------------------------------------------- */
+.optset-skel-text {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+/* Card ------------------------------------------------------------------ */
+.optset-skel-card {
+	display: flex;
+	flex-direction: column;
+	gap: var(--optset-s-4);
+	padding: var(--optset-s-5);
+	background: var(--optset-c-surface);
+	border: 1px solid var(--optset-c-border);
+	border-radius: var(--optset-r-lg);
+	box-shadow: var(--optset-sh-card);
+
+	&__head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--optset-s-3);
+	}
+
+	&__foot {
+		display: flex;
+		justify-content: flex-end;
+		padding-block-start: var(--optset-s-2);
+	}
+}
+
+/* Stat tile + grid ------------------------------------------------------ */
+.optset-skel-stat {
+	display: flex;
+	align-items: center;
+	gap: var(--optset-s-3);
+	padding: var(--optset-s-4);
+	background: var(--optset-c-surface);
+	border: 1px solid var(--optset-c-border);
+	border-radius: var(--optset-r-lg);
+	box-shadow: var(--optset-sh-1);
+
+	&__body {
+		flex: 1;
+		min-inline-size: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+}
+
+.optset-skel-stat-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: var(--optset-s-3);
+}
+
+/* Table ----------------------------------------------------------------- */
+.optset-skel-table {
+	background: var(--optset-c-surface);
+	border: 1px solid var(--optset-c-border);
+	border-radius: var(--optset-r-lg);
+	overflow: hidden;
+
+	&__head,
+	&__row {
+		display: grid;
+		grid-template-columns: 44px 1.4fr 1fr 1fr 120px;
+		align-items: center;
+		gap: var(--optset-s-4);
+		padding: 14px var(--optset-s-5);
+	}
+
+	&__head {
+		background: var(--optset-c-surface-2);
+		border-block-end: 1px solid var(--optset-c-border);
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__row {
+		border-block-end: 1px solid var(--optset-c-border-soft);
+		&:last-child { border-block-end: 0; }
+	}
+}
+
+/* Chart ----------------------------------------------------------------- */
+.optset-skel-chart {
+	display: flex;
+	flex-direction: column;
+	gap: var(--optset-s-4);
+	padding: var(--optset-s-5);
+	background: var(--optset-c-surface);
+	border: 1px solid var(--optset-c-border);
+	border-radius: var(--optset-r-lg);
+	min-block-size: 280px;
+
+	&__head {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	&__plot {
+		display: flex;
+		align-items: flex-end;
+		gap: var(--optset-s-3);
+		min-block-size: 180px;
+		padding-block: var(--optset-s-3);
+		border-block-start: 1px dashed var(--optset-c-border);
+	}
+
+	&__bar {
+		flex: 1;
+		inline-size: auto !important;
+		border-radius: var(--optset-r-sm) var(--optset-r-sm) 0 0;
+	}
+}
+
+/* Form ------------------------------------------------------------------ */
+.optset-skel-form {
+	display: flex;
+	flex-direction: column;
+	gap: var(--optset-s-5);
+
+	&__row {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+}
+
+/* Tabs ------------------------------------------------------------------ */
+.optset-skel-tabs {
+	display: flex;
+	gap: var(--optset-s-2);
+	padding-block-end: var(--optset-s-2);
+	border-block-end: 1px solid var(--optset-c-border);
+}
+
+/* Modal ----------------------------------------------------------------- */
+.optset-skel-modal {
+	display: flex;
+	flex-direction: column;
+	gap: var(--optset-s-4);
+	padding: var(--optset-s-6);
+	background: var(--optset-c-surface);
+	border: 1px solid var(--optset-c-border);
+	border-radius: var(--optset-r-xl);
+	box-shadow: var(--optset-sh-3);
+	max-inline-size: 560px;
+
+	&__foot {
+		display: flex;
+		justify-content: flex-end;
+		gap: var(--optset-s-2);
+		padding-block-start: var(--optset-s-2);
+	}
+}
+
+/* Nav ------------------------------------------------------------------- */
+.optset-skel-nav {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: var(--optset-s-3);
+	background: var(--optset-c-surface);
+	border: 1px solid var(--optset-c-border);
+	border-radius: var(--optset-r-lg);
+
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: var(--optset-s-3);
+		padding: 10px;
+		border-radius: var(--optset-r-md);
+	}
+}
+
+/* ── Builder skeleton — 1:1 with the real Option Builder stage ──────────
+ *
+ * Geometry intentionally mirrors `.optset-builder__topbar`, `.optset-builder__stage-
+ * wrap` and `.optset-stage*` in `_builder.scss` so the skeleton renders as a
+ * preloaded version of the page and no layout shift occurs when the real
+ * canvas takes over.
+ */
+.optset-skel-builder {
+	display: flex;
+	flex-direction: column;
+	min-block-size: 100%;
+	flex: 1;
+	background: var(--optset-c-bg);
+
+	/* Sticky chrome row — matches `.optset-builder__topbar`. */
+	&__topbar {
+		display: grid;
+		grid-template-columns: 32px 1fr auto;
+		align-items: center;
+		gap: var(--optset-s-3);
+		padding: 10px 16px;
+		background: var(--optset-c-surface);
+		border-block-end: 1px solid var(--optset-c-border);
+		box-shadow: var(--optset-c-shadow-sm, var(--optset-sh-1));
+	}
+
+	&__topbar-right {
+		display: flex;
+		align-items: center;
+		gap: var(--optset-s-2);
+	}
+
+	/* Stage scroll area — matches `.optset-builder__stage-wrap`. */
+	&__stage-wrap {
+		flex: 1;
+		overflow: auto;
+		padding: 32px;
+	}
+
+	/* Two-column product stage — matches `.optset-stage` + `.optset-stage__product`. */
+	&__stage {
+		max-inline-size: 1100px;
+		margin-inline: auto;
+		display: grid;
+		grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+		gap: 32px;
+		align-items: start;
+	}
+
+	/* Left column — matches `.optset-stage__gallery`. */
+	&__gallery {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		position: sticky;
+		inset-block-start: 16px;
+	}
+
+	&__hero {
+		aspect-ratio: 1 / 1;
+		inline-size: 100% !important;
+		block-size: auto !important;
+	}
+
+	&__thumbs {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 12px;
+	}
+
+	&__thumb {
+		aspect-ratio: 1 / 1;
+		inline-size: 100% !important;
+		block-size: auto !important;
+	}
+
+	/* Right column — matches `.optset-stage__summary`. */
+	&__summary {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		background: var(--optset-c-surface);
+		border: 1px solid var(--optset-c-border);
+		border-radius: var(--optset-c-radius-lg, var(--optset-r-lg));
+		box-shadow: var(--optset-c-shadow, var(--optset-sh-2));
+		padding: 28px;
+	}
+
+	/* Spacing between title-row and the price-row mirrors the real
+	   summary's `margin-block-end: 22px` on `.optset-stage__price`. */
+	&__summary > *:nth-child(2) { margin-block-end: 10px; }
+
+	&__options {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	&__field {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		padding: 14px 16px;
+		background: var(--optset-c-surface-2);
+		border: 1px solid var(--optset-c-border-soft, var(--optset-c-border));
+		border-radius: var(--optset-c-radius, var(--optset-r-md));
+	}
+
+	&__atc {
+		margin-block-start: 12px;
+	}
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 980px) {
+	.optset-skel-builder {
+		&__stage {
+			grid-template-columns: 1fr;
+			gap: 20px;
+		}
+
+		&__gallery {
+			position: static;
+		}
+
+		&__topbar {
+			grid-template-columns: 32px 1fr;
+
+			/* Hide the trailing actions cluster on narrow viewports — the
+			   real topbar collapses similarly. */
+			&-right > *:nth-child(n + 2) { display: none; }
+		}
+
+		&__topbar-right {
+			grid-column: 1 / -1;
+			padding-block-start: 6px;
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.optset-skel-builder {
+		&__stage-wrap { padding: 16px; }
+		&__summary    { padding: 18px; }
+		&__topbar-right > *:nth-child(n + 2) { display: none; }
+	}
+}
+
+/* ── Fade-in transition for real content ──────────────────────────────── */
+.optset-fadein {
+	animation: optset-fadein 260ms var(--optset-ease) both;
+}
+
+@keyframes optset-fadein {
+	from { opacity: 0; transform: translateY(4px); }
+	to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.optset-fadein { animation: none; }
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+	.optset-skel-table {
+		&__head,
+		&__row {
+			grid-template-columns: 32px 1fr 96px;
+			& > *:nth-child(n + 4) { display: none; }
+		}
+	}
+
+	.optset-skel-stat-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 480px) {
+	.optset-skel-stat-grid {
+		grid-template-columns: 1fr;
+	}
+}

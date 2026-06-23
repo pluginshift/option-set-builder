@@ -1,0 +1,97 @@
+/**
+ * Option Set Builder Admin — Global Theme.
+ *
+ * Single source of truth for every themed colour, shadow, radius, spacing
+ * and typography token in the admin dashboard. Tokens are exposed as CSS
+ * custom properties on `#optset-admin-root` so they are strictly scoped to the
+ * admin SPA — the storefront / front-end is never touched.
+ *
+ * To rebrand the dashboard, change the values in this file. Every screen,
+ * button, card, modal, input, table and tab updates automatically.
+ */
+
+#optset-admin-root {
+	/* Brand / primary --------------------------------------------------------*/
+	--optset-c-primary:        #059669;
+	--optset-c-primary-hover:  #047857;
+	--optset-c-primary-soft:   #d1fae5;
+	--optset-c-primary-ink:    #ffffff;
+	--optset-c-primary-rgb:        5, 150, 105;
+	--optset-c-primary-hover-rgb:  4, 120, 87;
+
+	/* Secondary / accent -----------------------------------------------------*/
+	--optset-c-secondary:      #34d399;
+	--optset-c-secondary-soft: #ecfdf5;
+
+	/* Semantic ---------------------------------------------------------------*/
+	--optset-c-success:        #10b981;
+	--optset-c-success-soft:   #dcfce7;
+	--optset-c-success-rgb:    16, 185, 129;
+	--optset-c-warning:        #f59e0b;
+	--optset-c-warning-soft:   #fef3c7;
+	--optset-c-warning-rgb:    245, 158, 11;
+	--optset-c-danger:         #ef4444;
+	--optset-c-danger-soft:    #fdeaea;
+	--optset-c-danger-rgb:     239, 68, 68;
+	--optset-c-info:           #0ea5e9;
+	--optset-c-info-soft:      #e0f2fe;
+	--optset-c-info-rgb:       14, 165, 233;
+
+	/* Pro / upsell -----------------------------------------------------------*/
+	--optset-c-pro:            #8b5cf6;
+	--optset-c-pro-soft:       #f3eefe;
+
+	/* Surfaces ---------------------------------------------------------------*/
+	--optset-c-bg:             #f7f8fb;
+	--optset-c-surface:        #ffffff;
+	--optset-c-surface-2:      #f6f7f9;
+	--optset-c-surface-3:      #eef1f6;
+	--optset-c-row-hover:      #f8fafc;
+
+	/* Borders ----------------------------------------------------------------*/
+	--optset-c-border:         #eceef3;
+	--optset-c-border-strong:  #dfe3ea;
+	--optset-c-border-soft:    #f1f3f7;
+
+	/* Ink / typography colours ----------------------------------------------*/
+	--optset-c-ink:            #0f172a;
+	--optset-c-ink-soft:       #334155;
+	--optset-c-muted:          #64748b;
+	--optset-c-faint:          #94a3b8;
+
+	/* Radius -----------------------------------------------------------------*/
+	--optset-r-sm:   6px;
+	--optset-r-md:   10px;
+	--optset-r-lg:   14px;
+	--optset-r-xl:   20px;
+	--optset-r-full: 999px;
+
+	/* Spacing ----------------------------------------------------------------*/
+	--optset-s-1:  4px;
+	--optset-s-2:  8px;
+	--optset-s-3:  12px;
+	--optset-s-4:  16px;
+	--optset-s-5:  20px;
+	--optset-s-6:  24px;
+	--optset-s-7:  32px;
+	--optset-s-8:  40px;
+
+	/* Elevation / shadows ----------------------------------------------------*/
+	--optset-sh-1: 0 1px 2px rgba(15, 23, 42, 0.04),
+				0 1px 3px rgba(15, 23, 42, 0.06);
+	--optset-sh-2: 0 4px 14px rgba(15, 23, 42, 0.08);
+	--optset-sh-3: 0 8px 30px rgba(15, 23, 42, 0.12);
+	--optset-sh-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+	--optset-sh-ring: 0 0 0 3px rgba(var(--optset-c-primary-rgb), 0.20);
+
+	/* Motion -----------------------------------------------------------------*/
+	--optset-ease:        cubic-bezier(0.16, 1, 0.3, 1);
+	--optset-dur-fast:    120ms;
+	--optset-dur:         180ms;
+	--optset-dur-slow:    260ms;
+
+	/* Typography -------------------------------------------------------------*/
+	--optset-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+				Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	--optset-font-mono: Menlo, Consolas, "SFMono-Regular", monospace;
+}

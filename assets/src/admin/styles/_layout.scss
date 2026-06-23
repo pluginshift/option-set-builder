@@ -1,0 +1,59 @@
+/* App shell scaffolding only. The top navigation lives in `_topbar.scss`
+   and per-screen layout in `_page-frame.scss`. */
+
+.optset-app {
+	display: flex;
+	flex-direction: column;
+	min-height: calc(100vh - 32px);
+	background: $optset-bg;
+}
+
+.optset-app__outlet {
+	flex: 1;
+	min-height: 0;
+
+	&--bleed {
+		padding: 0;
+		display: flex;
+	}
+}
+
+/* Legacy screen-head primitives kept around for screens that still reference
+   them. New screens should use `.optset-page__*` from PageFrame. */
+.optset-screen-head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: $optset-space;
+	margin-block-end: $optset-space-lg;
+	flex-wrap: wrap;
+}
+
+.optset-screen-head__actions {
+	display: flex;
+	gap: $optset-space-sm;
+	align-items: center;
+}
+
+.optset-screen-title { font-size: 22px; }
+
+.optset-screen-sub {
+	color: $optset-text-muted;
+	margin: 4px 0 0;
+}
+
+.optset-style__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: $optset-space;
+}
+
+.optset-promo {
+	border-color: rgba($optset-pro, 0.4);
+	background: linear-gradient(180deg, rgba($optset-pro, 0.05), transparent);
+}
+
+.optset-feature-list {
+	margin: 0 0 $optset-space;
+	padding-inline-start: 18px;
+}

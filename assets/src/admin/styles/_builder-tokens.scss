@@ -1,0 +1,42 @@
+/* Builder design tokens as CSS custom properties.
+ *
+ * Defined on :root so they reach the field picker and settings drawer, which
+ * Radix portals to <body> (outside .optset-app). Values are kept in lockstep
+ * with the Global Theme in `_theme.scss` so portaled UI matches the admin
+ * SPA. To rebrand, edit `_theme.scss` and mirror the primary/surface tokens
+ * here. */
+
+/* Builder tokens kept at :root so Radix-portaled UI (settings drawer, field
+   picker) that mounts outside `#optset-admin-root` can still read them. The
+   colour values are intentionally synced with the Global Theme in
+   `_theme.scss` so the portaled UI matches the admin SPA. */
+:root {
+	--optset-c-bg: #f7f8fb;
+	--optset-c-surface: #ffffff;
+	--optset-c-surface-2: #f6f7f9;
+	--optset-c-surface-3: #eef1f6;
+	--optset-c-border: #eceef3;
+	--optset-c-border-strong: #dfe3ea;
+	--optset-c-ink: #0f172a;
+	--optset-c-ink-soft: #334155;
+	--optset-c-muted: #64748b;
+	--optset-c-primary: #059669;
+	--optset-c-primary-hover: #047857;
+	--optset-c-primary-soft: #d1fae5;
+	--optset-c-active: #111827;
+	--optset-c-active-ink: #ffffff;
+	--optset-c-danger: #ef4444;
+	--optset-c-danger-soft: #fdeaea;
+	--optset-c-overlay: rgba(15, 23, 42, 0.45);
+
+	--optset-c-radius-sm: 8px;
+	--optset-c-radius: 12px;
+	--optset-c-radius-lg: 18px;
+
+	--optset-c-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06),
+		0 1px 3px rgba(15, 23, 42, 0.05);
+	--optset-c-shadow: 0 6px 24px rgba(15, 23, 42, 0.08);
+	--optset-c-shadow-lg: 0 24px 70px rgba(15, 23, 42, 0.22);
+	--optset-c-ring: 0 0 0 3px rgba(5, 150, 105, 0.2);
+}
+

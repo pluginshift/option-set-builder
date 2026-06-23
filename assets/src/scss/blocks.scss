@@ -1,0 +1,1615 @@
+/**
+ * Storefront control widgets. Scoped under `.optset-options` so styling stays
+ * isolated from the host theme. Pairs with store.scss layout.
+ *
+ * Every selector here mirrors the exact markup emitted by the field
+ * renderers in includes/Fields/Type/*. The visual language follows the
+ * single-product demos: pill button groups, custom green checkboxes,
+ * color/image swatch cards with a selected check, and a custom dropdown.
+ */
+
+/* Popup open animation (kept at root so @keyframes are valid CSS). */
+@keyframes optset-popup-backdrop-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes optset-popup-box-in {
+	from {
+		opacity: 0;
+		transform: translateY(14px) scale(0.94);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+.optset-options {
+	$check: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath d='M1 5l3.4 3.4L11 1.6' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E";
+
+	/* ================================================================ */
+	/* Text-like inputs (text / email / tel / url / number / textarea)   */
+	/* ================================================================ */
+	.optset-input {
+		width: 100%;
+		min-height: var(--optset-control-h);
+		border: 1px solid var(--optset-border);
+		border-radius: var(--optset-radius);
+		padding: 10px 14px;
+		font: inherit;
+		color: var(--optset-text);
+		background: var(--optset-surface);
+		transition: border-color 0.15s, box-shadow 0.15s;
+
+		&::placeholder {
+			color: var(--optset-muted);
+			opacity: 1;
+		}
+
+		&:hover {
+			border-color: var(--optset-border-strong);
+		}
+
+		&:focus {
+			border-color: var(--optset-accent);
+			outline: none;
+			box-shadow: 0 0 0 3px var(--optset-accent-soft);
+		}
+	}
+
+	.optset-textarea {
+		min-height: calc(var(--optset-control-h) * 2);
+		resize: vertical;
+		line-height: 1.5;
+	}
+
+	/* Date / time composite control — date (left) + time (right). */
+	.optset-datetime {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+
+		&__part {
+			flex: 1 1 160px;
+		}
+
+		.optset-input {
+			width: 100%;
+		}
+	}
+
+	/* Date / time pickers (flatpickr-enhanced) — leading icon */
+	.optset-date,
+	.optset-time {
+		position: relative;
+
+		.optset-date__icon,
+		.optset-time__icon {
+			position: absolute;
+			inset-inline-start: 14px;
+			inset-block-start: 50%;
+			transform: translateY(-50%);
+			display: inline-flex;
+			color: var(--optset-muted);
+			pointer-events: none;
+		}
+
+		.optset-date-input,
+		.optset-time-input {
+			padding-inline-start: 44px;
+			cursor: pointer;
+			background: var(--optset-surface);
+		}
+
+		&:focus-within .optset-date__icon,
+		&:focus-within .optset-time__icon {
+			color: var(--optset-accent);
+		}
+	}
+
+	/* ================================================================ */
+	/* Phone — country (flag + dial code) selector + searchable list     */
+	/* ================================================================ */
+	.optset-phone {
+		position: relative;
+		display: flex;
+		align-items: stretch;
+		gap: 8px;
+
+		&__country {
+			display: inline-flex;
+			align-items: center;
+			gap: 6px;
+			padding: 0 12px;
+			min-height: var(--optset-control-h);
+			border: 1px solid var(--optset-border);
+			border-radius: var(--optset-radius);
+			background: var(--optset-surface);
+			color: var(--optset-label);
+			font: inherit;
+			cursor: pointer;
+			white-space: nowrap;
+
+			&:hover {
+				border-color: var(--optset-border-strong);
+			}
+		}
+
+		&__flag {
+			font-size: 1.25em;
+			line-height: 1;
+		}
+
+		&__dial {
+			color: var(--optset-muted);
+		}
+
+		&__caret {
+			width: 0;
+			height: 0;
+			border-inline: 4px solid transparent;
+			border-block-start: 5px solid var(--optset-muted);
+			transition: transform 0.15s;
+		}
+
+		&.optset-phone--open &__caret {
+			transform: rotate(180deg);
+		}
+
+		&__number {
+			flex: 1;
+			min-width: 0;
+		}
+
+		&__drop {
+			position: absolute;
+			inset-inline: 0;
+			inset-block-start: calc(100% + 4px);
+			z-index: 20;
+			background: var(--optset-surface);
+			border: 1px solid var(--optset-border);
+			border-radius: var(--optset-radius);
+			box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+			overflow: hidden;
+		}
+
+		&__search {
+			width: 100%;
+			border: none;
+			border-block-end: 1px solid var(--optset-border);
+			padding: 12px 14px;
+			font: inherit;
+			outline: none;
+			background: var(--optset-surface);
+			color: var(--optset-text);
+		}
+
+		&__list {
+			max-height: 260px;
+			overflow-y: auto;
+		}
+
+		&__opt {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			width: 100%;
+			padding: 10px 14px;
+			border: none;
+			background: none;
+			font: inherit;
+			color: var(--optset-text);
+			cursor: pointer;
+			text-align: start;
+
+			&[hidden] {
+				display: none;
+			}
+
+			&:hover,
+			&.is-active {
+				background: var(--optset-surface-alt);
+			}
+		}
+
+		&__name {
+			flex: 1;
+			min-width: 0;
+		}
+
+		&__opt &__dial {
+			color: var(--optset-muted);
+		}
+	}
+
+	/* ================================================================ */
+	/* Checkbox / radio choice lists                                     */
+	/* ================================================================ */
+	.optset-choices {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 10px 28px;
+
+		&[data-columns="2"] {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		&[data-columns="3"] {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+		&[data-columns="4"] {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+
+		.optset-choice {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin: 0;
+			cursor: pointer;
+			font-weight: 400;
+			color: var(--optset-text);
+			line-height: 1.3;
+
+			&:hover .optset-choice__label {
+				color: var(--optset-label);
+			}
+		}
+
+		/* Custom box / dot built from the native input. */
+		.optset-choice > input[type="checkbox"],
+		.optset-choice > input[type="radio"] {
+			appearance: none;
+			-webkit-appearance: none;
+			flex: none;
+			width: 20px;
+			height: 20px;
+			margin: 0;
+			border: 1.5px solid var(--optset-border-strong);
+			background: var(--optset-surface);
+			cursor: pointer;
+			transition: background 0.15s, border-color 0.15s;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		.optset-choice > input[type="checkbox"] {
+			border-radius: 5px;
+		}
+		.optset-choice > input[type="radio"] {
+			border-radius: 50%;
+		}
+
+		.optset-choice > input:hover {
+			border-color: var(--optset-accent);
+		}
+
+		.optset-choice > input:focus-visible {
+			outline: none;
+			box-shadow: 0 0 0 3px var(--optset-accent-soft);
+		}
+
+		.optset-choice > input[type="checkbox"]:checked {
+			background-color: var(--optset-accent);
+			border-color: var(--optset-accent);
+			background-image: url("#{$check}");
+			background-size: 12px;
+		}
+
+		.optset-choice > input[type="radio"]:checked {
+			border-color: var(--optset-accent);
+			background-color: var(--optset-surface);
+			background-image: radial-gradient(
+				circle,
+				var(--optset-accent) 0 5px,
+				transparent 6px
+			);
+		}
+
+		.optset-choice__label {
+			transition: color 0.12s;
+		}
+
+		.optset-price-badge {
+			margin-inline-start: auto;
+		}
+	}
+
+	/* ================================================================ */
+	/* Button group (pills)                                              */
+	/* ================================================================ */
+	.optset-buttongroup {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+
+		&[data-columns] {
+			display: grid;
+			grid-auto-flow: row;
+		}
+		&[data-columns="2"] {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		&[data-columns="3"] {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+		&[data-columns="4"] {
+			grid-template-columns: repeat(4, minmax(0, 1fr));
+		}
+
+		.optset-choice--button {
+			margin: 0;
+			cursor: pointer;
+		}
+
+		.optset-choice__native {
+			position: absolute;
+			opacity: 0;
+			width: 0;
+			height: 0;
+			pointer-events: none;
+		}
+
+		.optset-btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			min-height: 42px;
+			padding: 8px 22px;
+			border: 1px solid var(--optset-border-strong);
+			border-radius: var(--optset-radius-pill);
+			background: var(--optset-surface);
+			color: var(--optset-label);
+			font-weight: 500;
+			line-height: 1.2;
+			text-align: center;
+			transition: border-color 0.15s, background 0.15s, color 0.15s,
+				box-shadow 0.15s;
+		}
+
+		.optset-choice--button:hover .optset-btn {
+			border-color: var(--optset-accent);
+			color: var(--optset-accent);
+		}
+
+		.optset-choice__native:focus-visible + .optset-btn {
+			box-shadow: 0 0 0 3px var(--optset-accent-soft);
+		}
+
+		.optset-choice__native:checked + .optset-btn {
+			background: var(--optset-accent);
+			border-color: var(--optset-accent);
+			color: var(--optset-accent-contrast);
+
+			.optset-price-badge {
+				color: var(--optset-accent-contrast);
+				opacity: 0.9;
+			}
+		}
+	}
+
+	/* ================================================================ */
+	/* Swatches (color + image)                                          */
+	/* ================================================================ */
+	.optset-swatches {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 16px;
+	}
+
+	.optset-swatch-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 6px;
+		margin: 0;
+		cursor: pointer;
+		text-align: center;
+		font-size: 0.85em;
+		color: var(--optset-text);
+
+		&__native {
+			position: absolute;
+			opacity: 0;
+			width: 0;
+			height: 0;
+			pointer-events: none;
+		}
+
+		&__label {
+			font-weight: 500;
+			color: var(--optset-label);
+			line-height: 1.25;
+		}
+
+		.optset-price-badge {
+			font-size: 0.95em;
+		}
+	}
+
+	/* --- Color swatch: round chip with centered check when selected --- */
+	.optset-swatches--color .optset-swatch {
+		position: relative;
+		display: block;
+		width: var(--optset-swatch);
+		height: var(--optset-swatch);
+		border-radius: var(--optset-swatch-radius);
+		border: 1px solid rgba(0, 0, 0, 0.12);
+		box-shadow: 0 0 0 2px transparent;
+		transition: box-shadow 0.15s;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 0;
+			margin: auto;
+			width: 16px;
+			height: 14px;
+			background: url("#{$check}") center / contain no-repeat;
+			filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.45));
+			opacity: 0;
+			transition: opacity 0.12s;
+		}
+	}
+
+	.optset-swatches--color .optset-swatch-item:hover .optset-swatch {
+		box-shadow: 0 0 0 2px var(--optset-border-strong);
+	}
+
+	.optset-swatches--color
+		.optset-swatch-item__native:checked
+		+ .optset-swatch {
+		box-shadow: 0 0 0 2px var(--optset-surface),
+			0 0 0 4px var(--optset-accent);
+
+		&::after {
+			opacity: 1;
+		}
+	}
+
+	/* --- Image swatch: framed thumbnail with corner check when selected --- */
+	.optset-swatch-item--image {
+		position: relative;
+	}
+
+	.optset-swatch-img {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 64px;
+		height: 64px;
+		padding: 6px;
+		border: 2px solid var(--optset-border);
+		border-radius: var(--optset-radius);
+		background: var(--optset-surface-alt);
+		overflow: hidden;
+		transition: border-color 0.15s, box-shadow 0.15s;
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: contain;
+			display: block;
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset-block-start: -2px;
+			inset-inline-end: -2px;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: var(--optset-accent) url("#{$check}") center / 11px
+				no-repeat;
+			box-shadow: 0 0 0 2px var(--optset-surface);
+			transform: scale(0);
+			transition: transform 0.12s;
+		}
+	}
+
+	.optset-swatch-item--image:hover .optset-swatch-img {
+		border-color: var(--optset-border-strong);
+	}
+
+	.optset-swatch-item__native:checked + .optset-swatch-img {
+		border-color: var(--optset-accent);
+		box-shadow: 0 0 0 3px var(--optset-accent-soft);
+
+		&::after {
+			transform: scale(1);
+		}
+	}
+
+	/* ================================================================ */
+	/* Custom select / fontpicker dropdown                               */
+	/* ================================================================ */
+	.optset-select {
+		position: relative;
+		width: 100%;
+	}
+
+	.optset-select__toggle {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		width: 100%;
+		min-height: var(--optset-control-h);
+		padding: 10px 40px 10px 14px;
+		border: 1px solid var(--optset-border);
+		border-radius: var(--optset-radius);
+		background: var(--optset-surface);
+		color: var(--optset-label);
+		font: inherit;
+		text-align: start;
+		cursor: pointer;
+		transition: border-color 0.15s, box-shadow 0.15s;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset-inline-end: 16px;
+			inset-block-start: 50%;
+			width: 9px;
+			height: 9px;
+			border-right: 2px solid var(--optset-muted);
+			border-bottom: 2px solid var(--optset-muted);
+			transform: translateY(-65%) rotate(45deg);
+			transition: transform 0.18s;
+		}
+
+		&:hover {
+			border-color: var(--optset-border-strong);
+		}
+		&:focus-visible {
+			outline: none;
+			border-color: var(--optset-accent);
+			box-shadow: 0 0 0 3px var(--optset-accent-soft);
+		}
+	}
+
+	.optset-select__placeholder {
+		flex: 1;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.optset-select__list {
+		position: absolute;
+		inset-block-start: calc(100% + 6px);
+		inset-inline: 0;
+		z-index: 20;
+		max-height: 280px;
+		overflow-y: auto;
+		padding: 6px;
+		background: var(--optset-surface);
+		border: 1px solid var(--optset-border);
+		border-radius: var(--optset-radius);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+		display: none;
+	}
+
+	.optset-select--open {
+		.optset-select__list {
+			display: block;
+		}
+		.optset-select__toggle::after {
+			transform: translateY(-35%) rotate(225deg);
+		}
+	}
+
+	.optset-select__opt {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 9px 12px;
+		border-radius: 6px;
+		cursor: pointer;
+		color: var(--optset-text);
+		transition: background 0.12s;
+
+		&:hover {
+			background: var(--optset-accent-soft);
+		}
+
+		&--active {
+			background: var(--optset-accent-soft);
+			color: var(--optset-label);
+			font-weight: 600;
+		}
+
+		.optset-price-badge {
+			margin-inline-start: auto;
+		}
+	}
+
+	.optset-select__opt-img {
+		flex: none;
+		width: 30px;
+		height: 30px;
+		border-radius: 6px;
+		overflow: hidden;
+		background: var(--optset-surface-alt);
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+	}
+
+	/* ================================================================ */
+	/* Per-choice quantity stepper                                       */
+	/* ================================================================ */
+	.optset-choice__qty {
+		flex: none;
+		width: 64px;
+		min-height: 34px;
+		margin-inline-start: 8px;
+		padding: 4px 8px;
+		border: 1px solid var(--optset-border);
+		border-radius: 6px;
+		font: inherit;
+		text-align: center;
+		color: var(--optset-text);
+		background: var(--optset-surface);
+	}
+
+	.optset-swatch-item .optset-choice__qty {
+		margin-inline-start: 0;
+	}
+
+	/* ================================================================ */
+	/* Range slider                                                      */
+	/* ================================================================ */
+	.optset-range {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+
+		&__slider {
+			flex: 1;
+			accent-color: var(--optset-accent);
+			height: 4px;
+			cursor: pointer;
+		}
+
+		&__readout {
+			display: inline-flex;
+			align-items: center;
+			gap: 4px;
+			flex: none;
+		}
+
+		&__mirror {
+			width: 64px;
+			min-height: 34px;
+			padding: 4px 8px;
+			border: 1px solid var(--optset-border);
+			border-radius: 6px;
+			font: inherit;
+			text-align: center;
+			color: var(--optset-text);
+		}
+
+		&__postfix {
+			color: var(--optset-muted);
+			font-size: 0.9em;
+		}
+	}
+
+	/* ================================================================ */
+	/* Toggle                                                            */
+	/* ================================================================ */
+	.optset-toggle {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
+		cursor: pointer;
+
+		&__input {
+			position: absolute;
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
+
+		&__track {
+			position: relative;
+			flex: none;
+			width: 42px;
+			height: 24px;
+			border-radius: 999px;
+			background: var(--optset-border-strong);
+			transition: background 0.15s;
+		}
+
+		&__thumb {
+			position: absolute;
+			inset-block-start: 3px;
+			inset-inline-start: 3px;
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			background: #fff;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+			transition: inset-inline-start 0.15s;
+		}
+
+		&__input:focus-visible + .optset-toggle__track {
+			box-shadow: 0 0 0 3px var(--optset-accent-soft);
+		}
+
+		&__input:checked + .optset-toggle__track {
+			background: var(--optset-accent);
+
+			.optset-toggle__thumb {
+				inset-inline-start: 21px;
+			}
+		}
+
+		&__text {
+			color: var(--optset-label);
+		}
+
+		&__image {
+			display: inline-flex;
+			width: 30px;
+			height: 30px;
+			border-radius: 6px;
+			overflow: hidden;
+			flex: none;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		&__label {
+			color: var(--optset-label);
+		}
+
+		.optset-price-badge {
+			margin-inline-start: 0;
+		}
+	}
+
+	/* Toggle row — switch + image + title + price + optional quantity box. */
+	.optset-toggle-row {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		flex-wrap: wrap;
+
+		.optset-choice__qty {
+			margin-inline-start: 4px;
+		}
+	}
+
+	/* ================================================================ */
+	/* Color picker                                                      */
+	/* ================================================================ */
+	.optset-colorpicker {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+
+		&__input {
+			width: 44px;
+			height: 44px;
+			padding: 0;
+			border: 1px solid var(--optset-border);
+			border-radius: var(--optset-radius);
+			background: none;
+			cursor: pointer;
+		}
+
+		&__hex {
+			width: 120px;
+			min-height: var(--optset-control-h);
+			padding: 8px 12px;
+			border: 1px solid var(--optset-border);
+			border-radius: var(--optset-radius);
+			font: inherit;
+			text-transform: uppercase;
+			color: var(--optset-text);
+		}
+
+		&__reset {
+			background: none;
+			border: none;
+			color: var(--optset-accent);
+			cursor: pointer;
+			font: inherit;
+			text-decoration: underline;
+		}
+	}
+
+	/* ================================================================ */
+	/* File upload                                                       */
+	/* ================================================================ */
+	.optset-dropzone {
+		display: flex;
+		align-items: center;
+		gap: 14px;
+		border: 1.5px dashed var(--optset-border-strong);
+		border-radius: var(--optset-radius);
+		padding: 16px 18px;
+		cursor: pointer;
+		color: var(--optset-muted);
+		transition: border-color 0.15s, background 0.15s;
+
+		&:hover,
+		&.is-dragover,
+		&.optset-dropzone--over {
+			border-color: var(--optset-accent);
+			background: var(--optset-accent-soft);
+		}
+
+		&__btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			flex: none;
+			padding: 9px 16px;
+			border: 1px solid var(--optset-border-strong);
+			border-radius: var(--optset-radius);
+			background: var(--optset-surface-alt);
+			color: var(--optset-label);
+			font-weight: 600;
+		}
+
+		&__text {
+			color: var(--optset-muted);
+		}
+
+		&:hover &__btn {
+			border-color: var(--optset-accent);
+			color: var(--optset-accent);
+		}
+	}
+
+	/* Hide the real <input type=file>; the dropzone label triggers it. */
+	.optset-upload__input {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+		border: 0;
+	}
+
+	.optset-upload__progress {
+		height: 6px;
+		margin-block-start: 8px;
+		border-radius: 999px;
+		background: var(--optset-surface-alt);
+		overflow: hidden;
+	}
+
+	.optset-upload__bar {
+		display: block;
+		height: 100%;
+		width: 0;
+		background: var(--optset-accent);
+		transition: width 0.2s;
+	}
+
+	.optset-upload__hints {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+		margin-block-start: 8px;
+		font-size: 0.85em;
+		color: var(--optset-muted);
+	}
+
+	.optset-upload__result {
+		margin-block-start: 14px;
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+		text-align: start;
+	}
+
+	.optset-upload-item {
+		display: grid;
+		grid-template-columns: auto 48px 1fr;
+		align-items: center;
+		gap: 12px;
+
+		&__remove {
+			border: none;
+			background: none;
+			cursor: pointer;
+			font-size: 20px;
+			line-height: 1;
+			color: var(--optset-muted);
+			padding: 0;
+
+			&:hover {
+				color: var(--optset-text);
+			}
+		}
+
+		&__thumb {
+			width: 48px;
+			height: 48px;
+			border-radius: 6px;
+			overflow: hidden;
+			background: var(--optset-surface-alt);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			&.is-file::after {
+				content: "";
+				width: 22px;
+				height: 26px;
+				background: var(--optset-border-strong);
+				border-radius: 3px;
+				clip-path: polygon(0 0, 70% 0, 100% 25%, 100% 100%, 0 100%);
+			}
+		}
+
+		&__body {
+			min-width: 0;
+		}
+
+		&__top {
+			display: flex;
+			align-items: baseline;
+			gap: 12px;
+			margin-block-end: 6px;
+		}
+
+		&__name {
+			flex: 1;
+			min-width: 0;
+			color: var(--optset-label);
+			word-break: break-all;
+		}
+
+		&__size {
+			flex: none;
+			color: var(--optset-text);
+			font-weight: 600;
+			white-space: nowrap;
+		}
+
+		&__bar {
+			display: block;
+			height: 6px;
+			border-radius: 999px;
+			background: var(--optset-surface-alt);
+			overflow: hidden;
+		}
+
+		&__bar-fill {
+			display: block;
+			height: 100%;
+			width: 0;
+			background: var(--optset-accent);
+		}
+	}
+
+	/* ================================================================ */
+	/* Heading / HTML / divider / spacer / shortcode                     */
+	/* ================================================================ */
+	.optset-heading {
+		margin: 0;
+		color: var(--optset-label);
+		font-weight: 700;
+		line-height: 1.3;
+	}
+
+	.optset-html {
+		color: var(--optset-text);
+	}
+
+	.optset-divider {
+		width: 100%;
+		margin: 0;
+		border: 0;
+		border-block-start: 1px solid var(--optset-border);
+
+		&--dashed {
+			border-block-start-style: dashed;
+		}
+		&--dotted {
+			border-block-start-style: dotted;
+		}
+		&--double {
+			border-block-start-width: 3px;
+			border-block-start-style: double;
+		}
+	}
+
+	.optset-spacer {
+		width: 100%;
+	}
+
+	/* ================================================================ */
+	/* Section (group / accordion)                                       */
+	/* ================================================================ */
+	.optset-section {
+		width: 100%;
+		border: 1px solid var(--optset-border);
+		border-radius: var(--optset-radius);
+		background: var(--optset-surface);
+		overflow: hidden;
+		box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+
+		/* Header — full-width bar. As a <button> it needs a hard reset so the
+		   host theme's button styling never bleeds in. */
+		&__header {
+			appearance: none;
+			-webkit-appearance: none;
+			box-sizing: border-box;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+			width: 100%;
+			margin: 0;
+			padding: 15px 18px;
+			border: 0;
+			border-radius: 0;
+			background: var(--optset-surface-alt);
+			color: var(--optset-label);
+			font: inherit;
+			font-weight: 600;
+			line-height: 1.3;
+			text-align: start;
+			cursor: pointer;
+			transition: background 0.15s;
+
+			&:hover {
+				background: var(--optset-border);
+			}
+
+			&:focus-visible {
+				outline: none;
+				box-shadow: inset 0 0 0 2px var(--optset-accent);
+			}
+
+			&--static {
+				cursor: default;
+
+				&:hover {
+					background: var(--optset-surface-alt);
+				}
+			}
+		}
+
+		&__title {
+			flex: 1 1 auto;
+			min-width: 0;
+			margin: 0;
+			font: inherit;
+			font-weight: 600;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		/* Chevron — points down when open, right when collapsed. */
+		&__chevron {
+			flex: none;
+			width: 9px;
+			height: 9px;
+			margin-block-start: -3px;
+			border-right: 2px solid var(--optset-muted);
+			border-bottom: 2px solid var(--optset-muted);
+			transform: rotate(45deg);
+			transition: transform 0.2s ease;
+		}
+
+		&__body {
+			display: flex;
+			flex-direction: column;
+			gap: var(--optset-space);
+			padding: 18px;
+		}
+
+		/* Plain (non-accordion) section keeps a quiet header + open body. */
+		&:not(.optset-section--accordion) .optset-section__header {
+			background: transparent;
+			border-bottom: 1px solid var(--optset-border);
+		}
+
+		&.is-collapsed {
+			.optset-section__body {
+				display: none;
+			}
+			.optset-section__chevron {
+				margin-block-start: 0;
+				transform: rotate(-45deg);
+			}
+		}
+	}
+
+	/* ================================================================ */
+	/* Popup                                                             */
+	/* ================================================================ */
+	.optset-popup__trigger {
+		align-self: flex-start;
+		padding: 10px 18px;
+		border: 1px solid var(--optset-accent);
+		border-radius: var(--optset-radius);
+		background: var(--optset-surface);
+		color: var(--optset-accent);
+		font: inherit;
+		font-weight: 500;
+		cursor: pointer;
+		transition: background 0.15s, color 0.15s;
+
+		&:hover {
+			background: var(--optset-accent);
+			color: var(--optset-accent-contrast);
+		}
+	}
+
+	.optset-popup__modal[hidden] {
+		display: none;
+	}
+
+	.optset-popup__modal {
+		position: fixed;
+		inset: 0;
+		z-index: 99999;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.optset-popup__backdrop {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.5);
+		animation: optset-popup-backdrop-in 0.25s ease both;
+	}
+
+	.optset-popup__box {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		background: var(--optset-surface);
+		border-radius: var(--optset-radius);
+		padding: 24px;
+		max-width: 800px;
+		width: 90%;
+		max-height: 85vh;
+		/* Visible so the close button can straddle the top corner; the
+		   content scrolls instead of the box. */
+		overflow: visible;
+		box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+		animation: optset-popup-box-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+	}
+
+	.optset-popup__close {
+		position: absolute;
+		inset-block-start: -16px;
+		inset-inline-end: -16px;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		border: 2px solid #e23b3b;
+		border-radius: 50%;
+		background: #fff;
+		color: #e23b3b;
+		font-size: 20px;
+		line-height: 1;
+		cursor: pointer;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+		transition: background 0.15s, color 0.15s, transform 0.15s;
+
+		&:hover {
+			background: #e23b3b;
+			color: #fff;
+			transform: scale(1.06);
+		}
+	}
+
+	/* Rich content authored in the Popup Builder. Mirrors the editor's
+	   typography so the storefront matches the builder 1:1. */
+	.optset-popup__content {
+		/* Scrolls within the (now overflow-visible) box. */
+		flex: 1 1 auto;
+		min-height: 0;
+		overflow-y: auto;
+		color: var(--optset-text);
+		font-size: 15px;
+		line-height: 1.65;
+
+		> :first-child {
+			margin-block-start: 0;
+		}
+
+		> :last-child {
+			margin-block-end: 0;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: var(--optset-label);
+			line-height: 1.25;
+			margin: 0.7em 0 0.35em;
+		}
+
+		h1 {
+			font-size: 1.9em;
+		}
+		h2 {
+			font-size: 1.5em;
+		}
+		h3 {
+			font-size: 1.25em;
+		}
+
+		p {
+			margin: 0 0 0.75em;
+		}
+
+		ul,
+		ol {
+			margin: 0 0 0.75em;
+			padding-inline-start: 1.6em;
+		}
+
+		li {
+			margin: 0.25em 0;
+		}
+
+		a {
+			color: var(--optset-accent);
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
+		strong,
+		b {
+			font-weight: 700;
+		}
+
+		mark {
+			background: #fff3a3;
+			padding: 0 2px;
+			border-radius: 2px;
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+			border-radius: var(--optset-radius);
+		}
+
+		/* Dynamic tables. */
+		table {
+			border-collapse: collapse;
+			width: 100%;
+			margin: 0.75em 0;
+			font-size: 0.95em;
+
+			td,
+			th {
+				border: 1px solid var(--optset-border-strong);
+				padding: 8px 10px;
+				text-align: start;
+				vertical-align: top;
+			}
+
+			th {
+				background: var(--optset-surface-alt);
+				font-weight: 600;
+				color: var(--optset-label);
+			}
+		}
+
+		/* Keep wide tables scrollable on very small screens. */
+		@media (max-width: 480px) {
+			table {
+				display: block;
+				overflow-x: auto;
+			}
+		}
+	}
+
+	/* ================================================================ */
+	/* Linked products                                                   */
+	/* ================================================================ */
+	.optset-linked {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		&__card {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			padding: 10px 12px;
+			// border: 1px solid var(--optset-border);
+			border-radius: var(--optset-radius);
+			cursor: pointer;
+			transition: border-color 0.15s, box-shadow 0.15s;
+
+			&:hover {
+				border-color: var(--optset-border-strong);
+			}
+
+			&:has(.optset-linked__native:checked) {
+				border-color: var(--optset-accent);
+				// box-shadow: 0 0 0 3px var(--optset-accent-soft);
+			}
+
+			&:has(.optset-linked__native:checked) .optset-linked__check {
+				display: flex;
+			}
+		}
+
+		&__native {
+			accent-color: var(--optset-accent);
+			width: 18px;
+			height: 18px;
+		}
+
+		&__thumb {
+			flex: none;
+			width: 48px;
+			height: 48px;
+			border-radius: 6px;
+			overflow: hidden;
+			background: var(--optset-surface-alt);
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+
+		&__meta {
+			display: flex;
+			flex-direction: column;
+			gap: 2px;
+		}
+
+		&__title {
+			font-weight: 500;
+			color: var(--optset-label);
+		}
+
+		&__price {
+			color: var(--optset-accent);
+			font-weight: 600;
+
+			del {
+				color: var(--optset-border-strong);
+				font-weight: 400;
+				margin-inline-end: 4px;
+			}
+		}
+
+		/* Responsive card grid (display = cards), styled like Image Swatch. */
+		&--cards {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+			gap: 12px;
+
+			.optset-linked__card {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				gap: 8px;
+				padding: 1px;
+			}
+
+			/* The native control is hidden; the card itself is the target and
+			   a checkmark badge marks the selection. */
+			.optset-linked__native {
+				position: absolute;
+				opacity: 0;
+				width: 0;
+				height: 0;
+				margin: 0;
+				pointer-events: none;
+			}
+
+			.optset-linked__thumb {
+				width: 100%;
+				height: auto;
+				aspect-ratio: 1 / 1;
+			}
+
+			.optset-linked__meta {
+				width: 100%;
+				align-items: center;
+			}
+
+			/* Quantity stepper anchored to the bottom of the card. */
+			.optset-linked__qty {
+				margin-block-start: auto;
+			}
+		}
+
+		/* Selection checkmark badge (hidden until the card is selected). */
+		&__check {
+			position: absolute;
+			inset-block-start: 8px;
+			inset-inline-end: 8px;
+			z-index: 3;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			width: 22px;
+			height: 22px;
+			border-radius: 6px;
+			background: var(--optset-accent);
+
+			&::after {
+				content: "";
+				width: 6px;
+				height: 11px;
+				margin-block-start: -2px;
+				border: solid #fff;
+				border-width: 0 2px 2px 0;
+				transform: rotate(45deg);
+			}
+		}
+
+		&__varsel {
+			width: 100%;
+			padding: 6px 8px;
+			border: 1px solid var(--optset-border);
+			border-radius: var(--optset-radius);
+			background: var(--optset-surface);
+			font-size: 13px;
+		}
+
+		&__qty {
+			width: 70px;
+			padding: 6px 8px;
+			border: 1px solid var(--optset-border);
+			border-radius: var(--optset-radius);
+			background: var(--optset-surface);
+			text-align: center;
+		}
+	}
+
+	/* ================================================================ */
+	/* Formula readout                                                   */
+	/* ================================================================ */
+	.optset-formula {
+		&__value {
+			font-weight: 700;
+			color: var(--optset-accent);
+		}
+	}
+
+	/* ================================================================ */
+	/* Mobile refinements                                                */
+	/* ================================================================ */
+	@media (max-width: 600px) {
+		.optset-choices[data-columns="3"],
+		.optset-choices[data-columns="4"] {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		.optset-buttongroup[data-columns="3"],
+		.optset-buttongroup[data-columns="4"] {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 400px) {
+		.optset-choices[data-columns] {
+			grid-template-columns: 1fr;
+		}
+	}
+}
+
+/* ====================================================================== */
+/* flatpickr calendar — appended to <body>, so it lives OUTSIDE            */
+/* .optset-options. Theme global `input` rules otherwise distort the year     */
+/* number-input (width / padding / hidden spinner), making year selection  */
+/* disappear. Reset the internals defensively so month AND year both work. */
+/* ====================================================================== */
+.flatpickr-calendar {
+	.flatpickr-current-month {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 6px;
+
+		.flatpickr-monthDropdown-months {
+			width: auto;
+			min-height: 0;
+			padding: 2px 4px;
+			font-size: inherit;
+			line-height: normal;
+			background: transparent;
+			border: 0;
+			box-shadow: none;
+			-webkit-appearance: menulist;
+			appearance: menulist;
+		}
+
+		.numInputWrapper {
+			width: 7ch;
+
+			input.cur-year {
+				width: 100%;
+				min-height: 0;
+				height: auto;
+				margin: 0;
+				padding: 0 0 0 4px;
+				font-size: inherit;
+				line-height: normal;
+				color: inherit;
+				background: transparent;
+				border: 0;
+				border-radius: 0;
+				box-shadow: none;
+			}
+
+			.arrowUp,
+			.arrowDown {
+				display: block;
+				opacity: 1;
+			}
+		}
+	}
+
+	/* Time picker (enableTime) — same theme-reset for its number inputs. */
+	.flatpickr-time {
+		input {
+			width: auto;
+			min-height: 0;
+			height: 40px;
+			margin: 0;
+			padding: 0;
+			font-size: inherit;
+			line-height: normal;
+			color: inherit;
+			background: transparent;
+			border: 0;
+			border-radius: 0;
+			box-shadow: none;
+		}
+
+		.flatpickr-am-pm {
+			width: auto;
+			padding: 0 6px;
+		}
+	}
+}

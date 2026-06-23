@@ -1,0 +1,270 @@
+/**
+ * Unified premium TopBar — single navigation chrome shared across every
+ * screen except the full-bleed Builder.
+ *
+ * Three-column grid (lead / tabs / trail). On narrow viewports collapses to
+ * a two-row stack with the tabs in a horizontally scrollable strip.
+ */
+
+.optset-topbar {
+	position: sticky;
+	inset-block-start: 32px;
+	z-index: 30;
+	margin-block-start: 0;
+
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: var(--optset-s-4);
+
+	min-height: 64px;
+	padding: var(--optset-s-3) var(--optset-s-6);
+	background: var(--optset-c-surface);
+	border-block-end: 1px solid var(--optset-c-border);
+	box-shadow: var(--optset-sh-1);
+	font-family: var(--optset-font);
+
+	/* ── Lead (logo + version + context CTA) ────────────────────────── */
+	&__lead {
+		display: flex;
+		align-items: center;
+		gap: var(--optset-s-4);
+		min-width: 0;
+	}
+
+	&__brand {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--optset-s-2);
+		color: var(--optset-c-primary);
+		text-decoration: none;
+		flex-shrink: 0;
+
+		&:hover { color: var(--optset-c-primary-hover); }
+		&:focus-visible {
+			outline: none;
+			box-shadow: var(--optset-sh-ring);
+			border-radius: var(--optset-r-md);
+		}
+	}
+
+	&__logo {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		inline-size: 36px;
+		block-size: 36px;
+		border-radius: var(--optset-r-md);
+		background: linear-gradient(135deg, var(--optset-c-primary), var(--optset-c-primary-hover));
+		color: var(--optset-c-primary-ink);
+		box-shadow: 0 4px 12px rgba(var(--optset-c-primary-rgb), 0.25);
+		flex-shrink: 0;
+	}
+
+	&__version {
+		display: inline-flex;
+		align-items: center;
+		padding: 4px 12px;
+		border-radius: var(--optset-r-full);
+		background: var(--optset-c-primary-soft);
+		color: var(--optset-c-primary-hover);
+		font-size: 12px;
+		font-weight: 700;
+		letter-spacing: 0.02em;
+		flex-shrink: 0;
+	}
+
+	&__cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		min-height: 38px;
+		padding: 0 var(--optset-s-4);
+		border: 0;
+		border-radius: var(--optset-r-md);
+		background: var(--optset-c-primary);
+		color: var(--optset-c-primary-ink);
+		font-size: 13px;
+		font-weight: 600;
+		cursor: pointer;
+		white-space: nowrap;
+		box-shadow:
+			0 1px 2px rgba(var(--optset-c-primary-rgb), 0.25),
+			0 4px 14px rgba(var(--optset-c-primary-rgb), 0.20);
+		transition:
+			background var(--optset-dur) var(--optset-ease),
+			box-shadow var(--optset-dur) var(--optset-ease),
+			transform var(--optset-dur) var(--optset-ease);
+
+		span:first-child {
+			font-size: 18px;
+			line-height: 1;
+			margin-block-start: -1px;
+		}
+
+		&:hover {
+			background: var(--optset-c-primary-hover);
+			box-shadow:
+				0 2px 6px rgba(var(--optset-c-primary-rgb), 0.30),
+				0 10px 24px rgba(var(--optset-c-primary-rgb), 0.25);
+			transform: translateY(-1px);
+		}
+		&:active { transform: translateY(0); }
+		&:focus-visible {
+			outline: none;
+			box-shadow: var(--optset-sh-ring);
+		}
+	}
+
+	/* ── Tabs ───────────────────────────────────────────────────────── */
+	&__tabs {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--optset-s-1);
+		min-width: 0;
+		overflow-x: auto;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar { display: none; }
+	}
+
+	&__tab {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		padding: 10px 16px;
+		color: var(--optset-c-ink);
+		font-size: 14px;
+		font-weight: 600;
+		text-decoration: none;
+		white-space: nowrap;
+		border-radius: var(--optset-r-md);
+		transition:
+			color var(--optset-dur) var(--optset-ease),
+			background var(--optset-dur) var(--optset-ease);
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset-inline: 16px;
+			inset-block-end: -1px;
+			block-size: 2px;
+			background: transparent;
+			border-radius: 2px 2px 0 0;
+			transition: background var(--optset-dur) var(--optset-ease);
+		}
+
+		&:hover {
+			color: var(--optset-c-primary);
+			background: var(--optset-c-primary-soft);
+		}
+
+		&.is-active {
+			color: var(--optset-c-primary);
+
+			&::after {
+				background: var(--optset-c-primary);
+			}
+		}
+
+		&:focus-visible {
+			outline: none;
+			box-shadow: var(--optset-sh-ring);
+		}
+	}
+
+	/* ── Trail (Upgrade / Pro pill) ─────────────────────────────────── */
+	&__trail {
+		display: flex;
+		align-items: center;
+		gap: var(--optset-s-2);
+		justify-self: end;
+	}
+
+	&__upgrade {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 8px 16px;
+		border: 1.5px solid var(--optset-c-primary);
+		border-radius: var(--optset-r-md);
+		background: transparent;
+		color: var(--optset-c-primary);
+		font-size: 13px;
+		font-weight: 700;
+		text-decoration: none;
+		white-space: nowrap;
+		transition:
+			background var(--optset-dur) var(--optset-ease),
+			color var(--optset-dur) var(--optset-ease),
+			box-shadow var(--optset-dur) var(--optset-ease),
+			transform var(--optset-dur) var(--optset-ease);
+
+		&:hover {
+			background: var(--optset-c-primary);
+			color: var(--optset-c-primary-ink);
+			box-shadow: 0 4px 14px rgba(var(--optset-c-primary-rgb), 0.25);
+			transform: translateY(-1px);
+		}
+
+		svg { flex-shrink: 0; }
+	}
+
+	&__plan {
+		font-size: 11px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		padding: 5px 12px;
+		border-radius: var(--optset-r-full);
+		background: var(--optset-c-primary-soft);
+		color: var(--optset-c-primary-hover);
+	}
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 980px) {
+	.optset-topbar {
+		grid-template-columns: 1fr auto;
+		grid-template-areas:
+			"lead trail"
+			"tabs tabs";
+		padding: var(--optset-s-3) var(--optset-s-4);
+		gap: var(--optset-s-3);
+
+		&__lead  { grid-area: lead; }
+		&__trail { grid-area: trail; }
+		&__tabs  {
+			grid-area: tabs;
+			justify-content: flex-start;
+			padding-block-start: var(--optset-s-2);
+			border-block-start: 1px solid var(--optset-c-border-soft);
+			margin: 0 calc(var(--optset-s-4) * -1);
+			padding-inline: var(--optset-s-4);
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.optset-topbar {
+		&__cta span:last-child,
+		&__upgrade span { display: none; }
+
+		&__cta {
+			padding: 0 var(--optset-s-3);
+			min-height: 36px;
+		}
+
+		&__upgrade {
+			padding: 8px 10px;
+		}
+
+		&__tab {
+			padding: 8px 12px;
+			font-size: 13px;
+
+			&::after { inset-inline: 12px; }
+		}
+	}
+}

@@ -1,0 +1,2927 @@
+# Copyright (C) 2026 pluginshift
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Option Set Builder 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/option-set-builder\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-06-22T04:41:43+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.8.1\n"
+"X-Domain: option-set-builder\n"
+
+#. Plugin Name of the plugin
+#: includes/Admin/AdminNotices.php:120
+msgid "Option Set Builder"
+msgstr ""
+
+#. Description of the plugin
+msgid "Build dynamic single-product option sets — swatches, uploads, conditional logic, formula pricing and more — with deep WooCommerce cart & checkout integration."
+msgstr ""
+
+#. Author of the plugin
+msgid "pluginshift"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://pluginshift.com"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:49
+#: includes/Admin/AdminMenu.php:50
+#: includes/Core/Plugin.php:149
+msgid "Option Set"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:59
+#: assets/src/admin/app/Sidebar.js:14
+#: assets/src/admin/components/TopBar.js:24
+msgid "Dashboard"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:60
+#: includes/Admin/AdminMenu.php:110
+#: includes/Core/Plugin.php:148
+#: assets/src/admin/app/Sidebar.js:20
+#: assets/src/admin/components/TopBar.js:29
+#: assets/src/admin/screens/dashboard/StatStrip.js:96
+msgid "Option Sets"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:61
+#: assets/src/admin/app/Sidebar.js:32
+#: assets/src/admin/components/TopBar.js:34
+#: assets/src/admin/screens/dashboard/QuickActions.js:43
+#: assets/src/admin/screens/dashboard/TopPerformers.js:42
+msgid "Analytics"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:62
+#: assets/src/admin/app/Sidebar.js:26
+#: assets/src/admin/components/TopBar.js:39
+#: assets/src/admin/screens/dashboard/QuickActions.js:34
+#: assets/src/admin/screens/Settings.js:73
+#: assets/src/admin/screens/settings/SettingsHeader.js:57
+msgid "Settings"
+msgstr ""
+
+#: includes/Admin/AdminMenu.php:84
+#: includes/Integration/WooCommerce/ProductPanel.php:67
+msgid "Product Options"
+msgstr ""
+
+#: includes/Admin/AdminNotices.php:122
+msgid "Thanks for installing! Build your first option set to start adding custom fields to products."
+msgstr ""
+
+#: includes/Admin/AdminNotices.php:124
+#: includes/Integration/WooCommerce/ProductPanel.php:94
+msgid "Create an Option Set"
+msgstr ""
+
+#: includes/Admin/AdminNotices.php:129
+#: assets/src/admin/components/ToastStack.js:34
+msgid "Dismiss"
+msgstr ""
+
+#: includes/Core/Installer.php:67
+msgid "Size"
+msgstr ""
+
+#: includes/Core/Installer.php:72
+msgid "Small"
+msgstr ""
+
+#: includes/Core/Installer.php:78
+msgid "Large"
+msgstr ""
+
+#: includes/Core/Installer.php:89
+msgid "Gift note"
+msgstr ""
+
+#: includes/Core/Installer.php:100
+msgid "Sample Option Set"
+msgstr ""
+
+#: includes/Core/Plugin.php:208
+msgid "Option Set Builder requires an active, up-to-date WooCommerce installation."
+msgstr ""
+
+#: includes/Core/Settings.php:27
+#: includes/Frontend/StoreRenderer.php:350
+msgid "Options Price"
+msgstr ""
+
+#: includes/Core/Settings.php:29
+#: includes/Frontend/StoreRenderer.php:358
+msgid "Total Price"
+msgstr ""
+
+#: includes/Core/Settings.php:33
+#: includes/Integration/WooCommerce/ShopLoop.php:89
+msgid "Select Options"
+msgstr ""
+
+#: includes/Data/OptionSetRepository.php:87
+#: includes/Rest/Route/SetsController.php:164
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:142
+msgid "Untitled"
+msgstr ""
+
+#: includes/Data/OptionSetRepository.php:145
+#: includes/Rest/Route/AssignmentController.php:117
+#: includes/Rest/Route/SetsController.php:180
+msgid "Option set not found."
+msgstr ""
+
+#: includes/Data/OptionSetRepository.php:150
+msgid "Copy"
+msgstr ""
+
+#: includes/Fields/Concerns/HandlesPricing.php:125
+msgid "char"
+msgstr ""
+
+#: includes/Fields/Concerns/HandlesPricing.php:127
+msgid "word"
+msgstr ""
+
+#: includes/Fields/Concerns/HandlesPricing.php:129
+msgid "unit"
+msgstr ""
+
+#: includes/Fields/Type/ColorPickerField.php:62
+msgid "Reset color"
+msgstr ""
+
+#: includes/Fields/Type/FileUploadField.php:112
+#: assets/src/admin/fields/registry.js:320
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:937
+#: assets/src/admin/screens/settings/sections/FontsSection.js:173
+msgid "Upload"
+msgstr ""
+
+#: includes/Fields/Type/FileUploadField.php:114
+#: assets/src/admin/fields/registry.js:324
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:944
+msgid "Click or drag and drop"
+msgstr ""
+
+#: includes/Fields/Type/FontPickerField.php:87
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:149
+msgid "Select Font"
+msgstr ""
+
+#: includes/Fields/Type/PopupField.php:60
+#: assets/src/admin/fields/registry.js:719
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:964
+#: assets/src/admin/screens/builder/settings/PopupConfig.js:46
+#: assets/src/admin/screens/builder/settings/SectionConfig.js:102
+msgid "Open"
+msgstr ""
+
+#: includes/Fields/Type/PopupField.php:69
+#: assets/src/admin/components/Modal.js:73
+#: assets/src/admin/screens/builder/picker/FieldPicker.js:133
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:217
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:369
+#: assets/src/admin/screens/builder/settings/popup/PopupPreview.js:61
+#: assets/src/admin/screens/builder/settings/SectionConfig.js:109
+#: assets/src/admin/screens/builder/settings/SettingsDrawer.js:117
+msgid "Close"
+msgstr ""
+
+#: includes/Fields/Type/SelectField.php:38
+msgid "Select an option"
+msgstr ""
+
+#: includes/Integration/WooCommerce/CartHooks.php:103
+msgid "Please fill in all required product options."
+msgstr ""
+
+#: includes/Integration/WooCommerce/ProductPanel.php:90
+msgid "No option sets are assigned to this product yet."
+msgstr ""
+
+#: includes/Integration/WooCommerce/ProductPanel.php:97
+msgid "Assigned Option Sets"
+msgstr ""
+
+#: includes/Integration/WooCommerce/ProductPanel.php:107
+#: assets/src/admin/screens/option-set/OptionSetRow.js:42
+msgid "(untitled)"
+msgstr ""
+
+#: includes/Integration/WooCommerce/ProductPanel.php:109
+msgid "Edit"
+msgstr ""
+
+#: includes/Integration/WooCommerce/ProductPanel.php:113
+msgid "Assignment is managed in the Option Set Builder app."
+msgstr ""
+
+#: includes/Pricing/PriceCalculator.php:639
+#: assets/src/admin/fields/registry.js:111
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:144
+msgid "Option"
+msgstr ""
+
+#: includes/Rest/Route/AnalyticsController.php:118
+#: includes/Rest/Route/AssignmentController.php:153
+#: includes/Rest/Route/FontsController.php:122
+#: includes/Rest/Route/FontsController.php:200
+#: includes/Rest/Route/FontsController.php:238
+#: includes/Rest/Route/PluginController.php:69
+#: includes/Rest/Route/SetsController.php:205
+#: includes/Rest/Route/SetsController.php:241
+#: includes/Rest/Route/SetsController.php:282
+#: includes/Rest/Route/SettingsController.php:100
+#: includes/Rest/Route/StyleController.php:97
+#: includes/Rest/Route/UploadController.php:99
+msgid "Invalid or missing nonce."
+msgstr ""
+
+#: includes/Rest/Route/AnalyticsController.php:125
+msgid "Invalid analytics payload."
+msgstr ""
+
+#: includes/Rest/Route/AssignmentController.php:111
+msgid "Storage unavailable."
+msgstr ""
+
+#: includes/Rest/Route/AssignmentController.php:157
+msgid "Assignment resolver unavailable."
+msgstr ""
+
+#: includes/Rest/Route/AssignmentController.php:162
+msgid "Missing set id."
+msgstr ""
+
+#: includes/Rest/Route/FontsController.php:127
+msgid "No font file provided."
+msgstr ""
+
+#: includes/Rest/Route/FontsController.php:133
+#: assets/src/admin/screens/settings/sections/FontsSection.js:52
+#: assets/src/admin/screens/settings/sections/FontsSection.js:81
+msgid "Font title is required."
+msgstr ""
+
+#: includes/Rest/Route/FontsController.php:139
+msgid "Font exceeds the 10MB limit."
+msgstr ""
+
+#: includes/Rest/Route/FontsController.php:144
+msgid "Allowed font types: woff, woff2, ttf."
+msgstr ""
+
+#: includes/Rest/Route/FontsController.php:173
+msgid "Could not store the font file."
+msgstr ""
+
+#: includes/Rest/Route/FontsController.php:222
+#: includes/Rest/Route/FontsController.php:262
+msgid "Font not found."
+msgstr ""
+
+#: includes/Rest/Route/PluginController.php:72
+msgid "You are not allowed to install plugins."
+msgstr ""
+
+#: includes/Rest/Route/PluginController.php:77
+msgid "Missing plugin slug."
+msgstr ""
+
+#: includes/Rest/Route/PluginController.php:96
+msgid "Plugin activated."
+msgstr ""
+
+#: includes/Rest/Route/PluginController.php:103
+msgid "Plugin installer unavailable."
+msgstr ""
+
+#: includes/Rest/Route/PluginController.php:117
+msgid "Could not fetch plugin information."
+msgstr ""
+
+#: includes/Rest/Route/PluginController.php:127
+msgid "Plugin installation failed."
+msgstr ""
+
+#: includes/Rest/Route/PluginController.php:140
+msgid "Plugin installed and activated."
+msgstr ""
+
+#: includes/Rest/Route/SearchController.php:89
+msgid "WooCommerce is not available."
+msgstr ""
+
+#: includes/Rest/Route/SearchController.php:161
+msgid "Unsupported taxonomy."
+msgstr ""
+
+#: includes/Rest/Route/SetsController.php:130
+#: includes/Rest/Route/SetsController.php:175
+#: includes/Rest/Route/SetsController.php:209
+#: includes/Rest/Route/SetsController.php:245
+#: includes/Rest/Route/SetsController.php:286
+msgid "Option-set storage unavailable."
+msgstr ""
+
+#: includes/Rest/Route/SetsController.php:250
+msgid "Invalid option-set id."
+msgstr ""
+
+#: includes/Rest/Route/SetsController.php:260
+msgid "Could not delete option set."
+msgstr ""
+
+#: includes/Rest/Route/SetsController.php:368
+msgid "Imported"
+msgstr ""
+
+#: includes/Rest/Route/SetsController.php:386
+msgid "Unknown bulk operation."
+msgstr ""
+
+#: includes/Rest/Route/SettingsController.php:86
+#: includes/Rest/Route/SettingsController.php:104
+msgid "Settings unavailable."
+msgstr ""
+
+#: includes/Rest/Route/SettingsController.php:109
+msgid "Invalid settings payload."
+msgstr ""
+
+#: includes/Rest/Route/UploadController.php:104
+msgid "No file provided."
+msgstr ""
+
+#: includes/Rest/Route/UploadController.php:109
+msgid "File exceeds the 25MB limit."
+msgstr ""
+
+#: includes/Rest/Route/UploadController.php:115
+msgid "Unsupported file type."
+msgstr ""
+
+#: includes/Rest/Route/UploadController.php:139
+msgid "Upload failed."
+msgstr ""
+
+#: assets/src/admin/api/client.js:89
+msgid "Unknown error."
+msgstr ""
+
+#: assets/src/admin/api/client.js:103
+msgid "Request failed."
+msgstr ""
+
+#: assets/src/admin/app/Sidebar.js:52
+msgid "Option Set Builder navigation"
+msgstr ""
+
+#: assets/src/admin/app/Sidebar.js:63
+msgid "Dynamic Options"
+msgstr ""
+
+#: assets/src/admin/components/AsyncSelect.js:117
+#: assets/src/admin/screens/builder/settings/DateConfig.js:321
+msgid "Remove"
+msgstr ""
+
+#: assets/src/admin/components/AsyncSelect.js:133
+msgid "Selection limit reached"
+msgstr ""
+
+#: assets/src/admin/components/AsyncSelect.js:138
+msgid "Type to search…"
+msgstr ""
+
+#: assets/src/admin/components/AsyncSelect.js:154
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:143
+msgid "Searching…"
+msgstr ""
+
+#: assets/src/admin/components/AsyncSelect.js:167
+msgid "No results."
+msgstr ""
+
+#: assets/src/admin/components/ConfirmDialog.js:27
+msgid "Confirm"
+msgstr ""
+
+#: assets/src/admin/components/ConfirmDialog.js:42
+#: assets/src/admin/screens/builder/settings/popup/LinkPrompt.js:113
+#: assets/src/admin/screens/settings/sections/FontsSection.js:265
+msgid "Cancel"
+msgstr ""
+
+#: assets/src/admin/components/MediaPicker.js:22
+#: assets/src/admin/components/MediaPicker.js:74
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:61
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:116
+msgid "Select image"
+msgstr ""
+
+#: assets/src/admin/components/MediaPicker.js:24
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:66
+msgid "Use image"
+msgstr ""
+
+#: assets/src/admin/components/MediaPicker.js:55
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:99
+msgid "Remove image"
+msgstr ""
+
+#: assets/src/admin/components/MediaPicker.js:78
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:347
+msgid "Media library unavailable"
+msgstr ""
+
+#: assets/src/admin/components/Pagination.js:80
+msgid "Pagination"
+msgstr ""
+
+#: assets/src/admin/components/Pagination.js:87
+msgid "First page"
+msgstr ""
+
+#: assets/src/admin/components/Pagination.js:96
+msgid "Previous page"
+msgstr ""
+
+#. translators: %d: page number
+#: assets/src/admin/components/Pagination.js:124
+msgid "Page %d"
+msgstr ""
+
+#: assets/src/admin/components/Pagination.js:138
+msgid "Next page"
+msgstr ""
+
+#: assets/src/admin/components/Pagination.js:147
+msgid "Last page"
+msgstr ""
+
+#. translators: %d: value
+#: assets/src/admin/components/ProgressBar.js:34
+msgid "%d products"
+msgstr ""
+
+#: assets/src/admin/components/ProgressBar.js:40
+msgid "No data"
+msgstr ""
+
+#: assets/src/admin/components/Repeater.js:29
+msgid "Add row"
+msgstr ""
+
+#: assets/src/admin/components/Repeater.js:57
+#: assets/src/admin/screens/builder/canvas/FieldCard.js:108
+msgid "Drag to reorder"
+msgstr ""
+
+#: assets/src/admin/components/Repeater.js:69
+msgid "Remove row"
+msgstr ""
+
+#: assets/src/admin/components/Skeleton.js:167
+#: assets/src/admin/components/Spinner.js:17
+msgid "Loading…"
+msgstr ""
+
+#: assets/src/admin/components/Skeleton.js:340
+msgid "Loading option builder…"
+msgstr ""
+
+#: assets/src/admin/components/TopBar.js:55
+msgid "Create Option Set"
+msgstr ""
+
+#: assets/src/admin/components/TopBar.js:63
+#: assets/src/admin/screens/dashboard/DashboardHeader.js:56
+msgid "New Option Set"
+msgstr ""
+
+#: assets/src/admin/components/TopBar.js:106
+msgid "Option Set Builder home"
+msgstr ""
+
+#: assets/src/admin/components/TopBar.js:152
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:38
+msgid "Primary"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:129
+msgid "Text"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:141
+msgid "Min length"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:149
+#: assets/src/admin/fields/registry.js:176
+msgid "Max length"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:159
+msgid "Textarea"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:171
+msgid "Rows"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:186
+msgid "Email"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:198
+msgid "URL"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:210
+msgid "Phone"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:226
+msgid "Number"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:239
+msgid "Date"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:263
+msgid "Time"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:282
+msgid "Date & Time"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:312
+msgid "File Upload"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:329
+msgid "File is too large"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:333
+msgid "Max File Size: [max_size]"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:339
+msgid "Too many files"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:343
+msgid "Maximum Number of Files: [max_files]"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:347
+msgid "Allowed Types are: [allowed_types]"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:360
+msgid "Checkboxes"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:370
+msgid "Radio Buttons"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:380
+msgid "Dropdown"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:389
+#: assets/src/admin/fields/registry.js:418
+msgid "Allow multiple"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:399
+msgid "Toggle"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:409
+msgid "Button Group"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:428
+msgid "Color Swatch"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:437
+msgid "Black"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:444
+msgid "White"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:455
+#: assets/src/admin/fields/registry.js:478
+msgid "Swatch shape"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:466
+msgid "Image Swatch"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:491
+msgid "Range Slider"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:504
+msgid "Color Picker"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:517
+msgid "Font Picker"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:535
+#: assets/src/admin/fields/registry.js:546
+#: assets/src/admin/screens/builder/settings/TypeConfig.js:46
+msgid "Formula"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:556
+msgid "Advanced Formula"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:570
+#: assets/src/admin/screens/builder/settings/TypeConfig.js:42
+msgid "Expression"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:580
+msgid "Linked Products"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:611
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:667
+msgid "Heading"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:622
+msgid "Heading level"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:633
+msgid "HTML"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:641
+msgid "HTML content"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:651
+msgid "Divider"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:662
+#: assets/src/admin/fields/registry.js:683
+msgid "Height (px)"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:672
+msgid "Spacer"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:693
+#: assets/src/admin/screens/builder/canvas/FieldCard.js:183
+#: assets/src/admin/screens/builder/canvas/FieldCard.js:197
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:487
+#: assets/src/admin/screens/builder/settings/SectionConfig.js:73
+msgid "Section"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:712
+msgid "Popup"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:732
+#: assets/src/admin/fields/registry.js:743
+msgid "Shortcode"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:757
+msgid "Input"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:761
+msgid "Choice"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:765
+msgid "Advanced"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:769
+msgid "Layout"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:773
+msgid "Special"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:807
+msgid "No price"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:811
+msgid "Fixed"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:815
+msgid "Percentage"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:819
+msgid "Per Unit"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:823
+msgid "Per Character"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:827
+msgid "Per Character (no spaces)"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:834
+msgid "Per Word"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:893
+msgid "is"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:897
+msgid "is not"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:901
+msgid "is empty"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:905
+msgid "is not empty"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:909
+msgid "contains"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:913
+msgid "does not contain"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:920
+msgid "greater than"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:924
+msgid "less than"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:928
+msgid "greater or equal"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:935
+msgid "less or equal"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:939
+msgid "starts with"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:943
+msgid "between"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:947
+msgid "is checked"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:955
+msgid "Full"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:959
+msgid "1/2"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:963
+msgid "1/3"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:967
+msgid "2/3"
+msgstr ""
+
+#: assets/src/admin/fields/registry.js:971
+msgid "1/4"
+msgstr ""
+
+#: assets/src/admin/screens/Analytics.js:47
+#: assets/src/admin/screens/analytics/AnalyticsHeader.js:28
+msgid "Analytics Overview"
+msgstr ""
+
+#: assets/src/admin/screens/Analytics.js:51
+msgid "Track your option performance."
+msgstr ""
+
+#: assets/src/admin/screens/Analytics.js:84
+msgid "Performance Trend"
+msgstr ""
+
+#: assets/src/admin/screens/Analytics.js:90
+msgid "Daily activity breakdown"
+msgstr ""
+
+#: assets/src/admin/screens/Analytics.js:115
+msgid "Conversion Funnel"
+msgstr ""
+
+#: assets/src/admin/screens/Analytics.js:121
+msgid "User journey breakdown"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/AnalyticsHeader.js:34
+msgid "Track your option performance"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/ConversionFunnel.js:35
+msgid "Viewed"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/ConversionFunnel.js:44
+msgid "Clicked"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/ConversionFunnel.js:53
+msgid "Added to Cart"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/ConversionFunnel.js:62
+msgid "Purchased"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/ConversionFunnel.js:96
+msgid "No journey data yet"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/ConversionFunnel.js:100
+msgid "Stages populate as shoppers move from view to purchase."
+msgstr ""
+
+#: assets/src/admin/screens/analytics/ConversionFunnel.js:114
+msgid "Total viewed"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/ConversionFunnel.js:126
+msgid "Conversion funnel from viewed to purchased"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/helpers.js:27
+#: assets/src/admin/screens/builder/settings/DateConfig.js:78
+msgid "Today"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/helpers.js:29
+msgid "7 Days"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/helpers.js:31
+msgid "30 Days"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/helpers.js:34
+msgid "90 Days"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/KpiGrid.js:37
+msgid "Total Clicks"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/KpiGrid.js:44
+msgid "Click-through rate"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/KpiGrid.js:52
+msgid "Cart Additions"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/KpiGrid.js:59
+msgid "Add-to-cart rate"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/KpiGrid.js:67
+msgid "Completed Sales"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/KpiGrid.js:74
+msgid "Checkout rate"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/KpiGrid.js:82
+#: assets/src/admin/screens/analytics/OptionRow.js:104
+#: assets/src/admin/screens/analytics/OptionTable.js:48
+msgid "Revenue"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/KpiGrid.js:86
+msgid "Overall conversion rate"
+msgstr ""
+
+#. translators: %d: option set id
+#. translators: %d: set id
+#: assets/src/admin/screens/analytics/OptionRow.js:31
+#: assets/src/admin/screens/dashboard/RecentActivity.js:89
+#: assets/src/admin/screens/dashboard/TopPerformers.js:82
+msgid "Option set #%d"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionRow.js:48
+#: assets/src/admin/screens/analytics/OptionTable.js:25
+msgid "Option details"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionRow.js:64
+#: assets/src/admin/screens/analytics/OptionTable.js:33
+#: assets/src/admin/screens/analytics/TrendChart.js:23
+msgid "Clicks"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionRow.js:84
+#: assets/src/admin/screens/analytics/OptionTable.js:38
+msgid "Cart rate"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionRow.js:94
+#: assets/src/admin/screens/analytics/OptionTable.js:43
+msgid "Conversion"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionRow.js:124
+#: assets/src/admin/screens/analytics/OptionTable.js:53
+msgid "CTR"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionTable.js:184
+msgid "Option Performance"
+msgstr ""
+
+#. translators: 1: shown count 2: total
+#: assets/src/admin/screens/analytics/OptionTable.js:193
+msgid "Showing %1$d of %2$d options"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionTable.js:200
+msgid "Per-option lifetime totals"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionTable.js:228
+msgid "No options to show"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionTable.js:234
+msgid "Stats appear once shoppers view products with option sets."
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionTable.js:238
+msgid "No options match the current search or filter."
+msgstr ""
+
+#. translators: 1: current page 2: total pages
+#: assets/src/admin/screens/analytics/OptionTable.js:301
+msgid "Page %1$d of %2$d"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionTableToolbar.js:16
+msgid "All options"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionTableToolbar.js:20
+msgid "With orders"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionTableToolbar.js:24
+msgid "With revenue"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionTableToolbar.js:81
+#: assets/src/admin/screens/option-set/OptionSetToolbar.js:83
+msgid "Search options…"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionTableToolbar.js:87
+msgid "Search options"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionTableToolbar.js:108
+#: assets/src/admin/screens/option-set/OptionSetToolbar.js:110
+msgid "Filter"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/OptionTableToolbar.js:156
+#: assets/src/admin/screens/option-set/OptionSetToolbar.js:159
+msgid "Export"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/RangeTabs.js:60
+msgid "Analytics date range"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/TrendChart.js:28
+msgid "Carts"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/TrendChart.js:33
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:470
+#: assets/src/admin/screens/builder/settings/ValuePricing.js:59
+msgid "Sales"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/TrendChart.js:132
+msgid "No activity yet"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/TrendChart.js:136
+msgid "The trend appears once shoppers start interacting with your option sets."
+msgstr ""
+
+#: assets/src/admin/screens/analytics/TrendChart.js:170
+msgid "Daily clicks, cart additions and sales trend"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/TrendChart.js:299
+msgid "Daily performance data"
+msgstr ""
+
+#: assets/src/admin/screens/analytics/TrendChart.js:307
+msgid "Day"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:21
+#: assets/src/admin/screens/builder/AssignmentModal.js:21
+msgid "All products"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:25
+#: assets/src/admin/screens/builder/AssignmentModal.js:29
+msgid "Specific products"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:32
+#: assets/src/admin/screens/builder/AssignmentModal.js:40
+msgid "Product category"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:39
+#: assets/src/admin/screens/builder/AssignmentModal.js:51
+msgid "Product tag"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:43
+#: assets/src/admin/screens/builder/AssignmentModal.js:59
+msgid "Product brand"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:47
+#: assets/src/admin/screens/builder/AssignmentModal.js:67
+msgid "None (disabled)"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:146
+msgid "Assignment saved."
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:162
+#: assets/src/admin/screens/Assignment.js:192
+#: assets/src/admin/screens/Builder.js:245
+msgid "Assignment"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:168
+msgid "Save the option set first, then assign it to products."
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:178
+#: assets/src/admin/screens/Assignment.js:209
+msgid "Back to builder"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:198
+msgid "Decide which products show this option set."
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:221
+#: assets/src/admin/screens/Builder.js:270
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:381
+#: assets/src/admin/screens/Settings.js:61
+#: assets/src/admin/screens/settings/SettingsHeader.js:88
+msgid "Saving…"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:225
+msgid "Save assignment"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:247
+msgid "Scope"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:275
+#: assets/src/admin/screens/option-set/OptionSetRow.js:180
+#: assets/src/admin/screens/option-set/OptionSetTable.js:36
+msgid "Products"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:281
+#: assets/src/admin/screens/builder/AssignmentModal.js:164
+msgid "Include products"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:306
+msgid "Terms"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:328
+msgid "Exclusions"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:334
+#: assets/src/admin/screens/builder/AssignmentModal.js:208
+msgid "Exclude products"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:338
+#: assets/src/admin/screens/builder/AssignmentModal.js:212
+msgid "These products never show this option set."
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:356
+msgid "Preview link"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:363
+msgid "Publish the option set to preview it on a product."
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:375
+msgid "Open a matching product"
+msgstr ""
+
+#: assets/src/admin/screens/Assignment.js:382
+msgid "No matching published product found yet."
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:77
+msgid "Back to option sets"
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:96
+msgid "Option set saved."
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:145
+msgid "Back"
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:158
+msgid "Untitled option set"
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:180
+msgid "Build"
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:193
+#: assets/src/admin/screens/builder/settings/PopupConfig.js:99
+msgid "Preview"
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:228
+msgid "Published"
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:232
+msgid "Draft"
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:257
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:203
+msgid "Global Style"
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:274
+#: assets/src/admin/screens/settings/sections/FontsSection.js:255
+msgid "Save"
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:297
+msgid "Assignment required"
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:309
+msgid "Save as Draft"
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:323
+msgid "Assign products"
+msgstr ""
+
+#: assets/src/admin/screens/Builder.js:339
+msgid "Please select at least one product to continue. To save without selecting any products, choose the 'Draft' status instead."
+msgstr ""
+
+#: assets/src/admin/screens/builder/AssignmentModal.js:22
+msgid "Show on every product in the store."
+msgstr ""
+
+#: assets/src/admin/screens/builder/AssignmentModal.js:33
+msgid "Pick individual products."
+msgstr ""
+
+#: assets/src/admin/screens/builder/AssignmentModal.js:44
+msgid "Apply to one or more categories."
+msgstr ""
+
+#: assets/src/admin/screens/builder/AssignmentModal.js:52
+msgid "Apply to tagged products."
+msgstr ""
+
+#: assets/src/admin/screens/builder/AssignmentModal.js:60
+msgid "Apply to a product brand."
+msgstr ""
+
+#: assets/src/admin/screens/builder/AssignmentModal.js:71
+msgid "Not shown anywhere yet."
+msgstr ""
+
+#: assets/src/admin/screens/builder/AssignmentModal.js:111
+msgid "Assign to products"
+msgstr ""
+
+#: assets/src/admin/screens/builder/AssignmentModal.js:122
+#: assets/src/admin/screens/builder/settings/PopupConfig.js:110
+#: assets/src/admin/screens/dashboard/GettingStarted.js:134
+msgid "Done"
+msgstr ""
+
+#: assets/src/admin/screens/builder/AssignmentModal.js:129
+msgid "Choose where this option set appears. Changes are saved with the option set."
+msgstr ""
+
+#: assets/src/admin/screens/builder/AssignmentModal.js:173
+#: assets/src/admin/screens/builder/AssignmentModal.js:220
+msgid "Search products…"
+msgstr ""
+
+#: assets/src/admin/screens/builder/AssignmentModal.js:194
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:128
+msgid "Search…"
+msgstr ""
+
+#: assets/src/admin/screens/builder/canvas/AddFieldButton.js:41
+msgid "Add field"
+msgstr ""
+
+#: assets/src/admin/screens/builder/canvas/Canvas.js:53
+msgid "Start building your options"
+msgstr ""
+
+#: assets/src/admin/screens/builder/canvas/Canvas.js:59
+msgid "Add your first field — text, choices, swatches and more."
+msgstr ""
+
+#: assets/src/admin/screens/builder/canvas/Canvas.js:65
+#: assets/src/admin/screens/builder/picker/FieldPicker.js:90
+msgid "Add a field"
+msgstr ""
+
+#: assets/src/admin/screens/builder/canvas/Canvas.js:101
+msgid "Sample Product"
+msgstr ""
+
+#: assets/src/admin/screens/builder/canvas/Canvas.js:115
+msgid "No options to preview yet."
+msgstr ""
+
+#: assets/src/admin/screens/builder/canvas/Canvas.js:153
+msgid "Add to cart"
+msgstr ""
+
+#: assets/src/admin/screens/builder/canvas/FieldCard.js:125
+msgid "Edit settings"
+msgstr ""
+
+#: assets/src/admin/screens/builder/canvas/FieldCard.js:136
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:388
+msgid "Duplicate"
+msgstr ""
+
+#: assets/src/admin/screens/builder/canvas/FieldCard.js:149
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:400
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:478
+msgid "Delete"
+msgstr ""
+
+#: assets/src/admin/screens/builder/picker/FieldPicker.js:122
+msgid "Search fields…"
+msgstr ""
+
+#: assets/src/admin/screens/builder/picker/FieldPicker.js:145
+msgid "No fields match your search."
+msgstr ""
+
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:277
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:338
+msgid "Product"
+msgstr ""
+
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:402
+msgid "Choose…"
+msgstr ""
+
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:520
+msgid "Empty section"
+msgstr ""
+
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:610
+msgid "Search"
+msgstr ""
+
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:693
+msgid "Custom HTML"
+msgstr ""
+
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:924
+msgid "Pick a colour"
+msgstr ""
+
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:976
+msgid "Formula result"
+msgstr ""
+
+#: assets/src/admin/screens/builder/preview/FieldPreview.js:1073
+msgid "Untitled field"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceFieldExtras.js:30
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:498
+msgid "Enable Quantity"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceFieldExtras.js:39
+msgid "Minimum quantity"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceFieldExtras.js:51
+msgid "Maximum quantity"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceFieldExtras.js:84
+msgid "Min Max Restriction"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceFieldExtras.js:93
+msgid "Min restriction"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceFieldExtras.js:105
+#: assets/src/admin/screens/builder/settings/ChoiceFieldExtras.js:125
+msgid "Item"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceFieldExtras.js:113
+msgid "Max restriction"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceFieldExtras.js:150
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:506
+msgid "Allow Multiple"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceFieldExtras.js:210
+msgid "Update product image on selection"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceFieldExtras.js:225
+#: assets/src/admin/screens/builder/settings/TelConfig.js:127
+#: assets/src/admin/screens/builder/settings/TypeConfig.js:224
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:207
+msgid "Placeholder"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:88
+msgid "Change image"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:157
+msgid "Select font"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:227
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:376
+msgid "Reorder"
+msgstr ""
+
+#. translators: %d: row number
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:247
+msgid "Option %d"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:278
+msgid "Choose colour"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:319
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:327
+msgid "Selected by default"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:341
+msgid "Delete option"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:428
+msgid "Color"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:429
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:447
+msgid "Font"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:430
+msgid "Image"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:451
+#: assets/src/admin/screens/builder/settings/tabs/GeneralTab.js:83
+msgid "Title"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:458
+#: assets/src/admin/screens/builder/settings/ValuePricing.js:47
+msgid "Price Type"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:464
+#: assets/src/admin/screens/builder/settings/ValuePricing.js:53
+msgid "Regular"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:473
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:350
+#: assets/src/admin/screens/option-set/OptionSetRow.js:156
+#: assets/src/admin/screens/option-set/OptionSetStats.js:29
+#: assets/src/admin/screens/option-set/OptionSetToolbar.js:18
+msgid "Active"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ChoiceTable.js:516
+msgid "Add New Option"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:28
+msgid "DD/MM/YYYY (31/07/2026)"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:35
+msgid "MM/DD/YYYY (07/31/2026)"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:42
+msgid "YYYY-MM-DD (2026-07-31)"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:49
+msgid "DD-MM-YYYY (31-07-2026)"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:56
+msgid "Month D, YYYY (July 31, 2026)"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:63
+msgid "D Month YYYY (31 July 2026)"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:74
+msgid "None"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:82
+msgid "Custom"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:88
+msgid "Sun"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:89
+msgid "Mon"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:90
+msgid "Tue"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:91
+msgid "Wed"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:92
+msgid "Thu"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:93
+msgid "Fri"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:94
+msgid "Sat"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:209
+#: assets/src/admin/screens/builder/settings/TimeConfig.js:194
+msgid "Display"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:215
+msgid "Date format"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:230
+#: assets/src/admin/screens/builder/settings/TimeConfig.js:229
+msgid "Selectable range"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:237
+msgid "Earliest date"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:258
+msgid "Latest date"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:283
+msgid "Block today's date"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:293
+msgid "Blocked dates"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:299
+msgid "Add a date to block"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:307
+msgid "Pick a date…"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:337
+msgid "Blocked weekdays"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/DateConfig.js:351
+msgid "Blocked days of the month"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:83
+msgid "Add type (e.g. tiff)"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:96
+msgid "Add"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:122
+msgid "Labels"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:129
+msgid "Upload text"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:140
+msgid "Drag & drop text"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:155
+msgid "File size"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:162
+msgid "Maximum file size (MB)"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:174
+msgid "Too-large error message"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:186
+msgid "File size hint text"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:190
+msgid "Use [max_size] for the configured size."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:204
+msgid "File count"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:211
+msgid "Minimum number of files"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:223
+msgid "Maximum number of files"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:236
+msgid "Too-many error message"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:247
+msgid "File count hint text"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:251
+msgid "Use [max_files] for the configured maximum."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:265
+msgid "Allowed file types"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:271
+msgid "Allowed types hint text"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/FileUploadConfig.js:275
+msgid "Use [allowed_types] for the chosen list."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:34
+msgid "Text Color"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:42
+msgid "Field Border"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:46
+msgid "Field Fill"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:50
+msgid "Over Primary Color"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:57
+msgid "Required / Error Color"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:119
+msgid "px"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:163
+msgid "Global style saved."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:208
+msgid "Live preview · applies to all option sets"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:236
+msgid "Dimensions"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:240
+msgid "Set exact pixel values."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:246
+msgid "Option Fields Size"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:256
+msgid "Option Fields Shape"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:269
+msgid "Color Palette"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:273
+msgid "Pick a preset, then fine-tune below."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:328
+msgid "Colors"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/GlobalStylePanel.js:385
+msgid "Save style"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:124
+msgid "Product limit reached"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:156
+msgid "No products found."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:216
+msgid "Select Variations"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:224
+msgid "No purchasable variations."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:344
+msgid "Variation"
+msgstr ""
+
+#. translators: %d: number of selected variations.
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:397
+msgid "%d Variations"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:403
+msgid "N/A"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:427
+msgid "Select variations"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:460
+msgid "Remove product"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:490
+msgid "Merge Variation Products into one product"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:516
+msgid "Min quantity"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/LinkedProductsConfig.js:528
+msgid "Max quantity"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/LinkPrompt.js:60
+msgid "https://example.com"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/LinkPrompt.js:84
+msgid "New tab"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/LinkPrompt.js:89
+msgid "Apply link"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/LinkPrompt.js:101
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:331
+msgid "Remove link"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/mediaFrame.js:32
+msgid "Select or upload image"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/mediaFrame.js:37
+msgid "Use this image"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/PopupPreview.js:36
+msgid "Nothing to preview yet — add some content."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/PopupPreview.js:46
+msgid "Popup preview"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/RichTextEditor.js:93
+#: assets/src/admin/screens/builder/settings/PopupConfig.js:56
+msgid "Popup content"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/RichTextEditor.js:190
+msgid "<p>Your HTML…</p>"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/TableControls.js:64
+msgid "Table"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/TableControls.js:68
+msgid "Add column before"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/TableControls.js:77
+msgid "Add column after"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/TableControls.js:86
+msgid "Delete column"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/TableControls.js:98
+msgid "Add row above"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/TableControls.js:107
+msgid "Add row below"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/TableControls.js:116
+msgid "Delete row"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/TableControls.js:128
+msgid "Toggle header row"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/TableControls.js:137
+msgid "Merge cells"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/TableControls.js:146
+msgid "Split cell"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/TableControls.js:159
+msgid "Delete table"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:114
+msgid "Undo (Ctrl/Cmd+Z)"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:124
+msgid "Redo (Shift+Ctrl/Cmd+Z)"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:139
+msgid "Bold"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:150
+msgid "Italic"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:163
+msgid "Underline"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:176
+msgid "Highlight"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:194
+msgid "Paragraph"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:207
+msgid "Heading 1"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:218
+msgid "Heading 2"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:229
+msgid "Heading 3"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:245
+msgid "Bullet list"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:258
+msgid "Numbered list"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:276
+msgid "Align left"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:289
+msgid "Align center"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:302
+msgid "Align right"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:320
+msgid "Insert / edit link"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:343
+msgid "Insert image"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:358
+msgid "Insert table"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:374
+msgid "Clear formatting"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/popup/Toolbar.js:394
+msgid "Edit HTML source"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/PopupConfig.js:39
+msgid "Trigger button text"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/PopupConfig.js:60
+msgid "Design the content shown inside the popup — text, images, links and tables."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/PopupConfig.js:72
+msgid "Edit popup content"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/PopupConfig.js:76
+msgid "Design popup content"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/PopupConfig.js:86
+msgid "Popup Builder"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/SectionConfig.js:62
+msgid "Style"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/SectionConfig.js:80
+msgid "Accordion"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/SectionConfig.js:91
+msgid "Initial state"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/SettingsDrawer.js:26
+msgid "General"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/SettingsDrawer.js:30
+msgid "Styles"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/SettingsDrawer.js:34
+msgid "Conditional logic"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/GeneralTab.js:54
+msgid "Hide title"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/GeneralTab.js:63
+msgid "Required"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/GeneralTab.js:73
+msgid "Enable Formula Value"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/GeneralTab.js:95
+msgid "Help text"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:103
+msgid "Select state"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:110
+msgid "Checked / On"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:117
+msgid "Unchecked / Off"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:136
+msgid "Select option"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:166
+msgid "e.g. 10,20"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:170
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:321
+msgid "Value"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:233
+msgid "Enable conditional logic for this element"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:250
+msgid "Show"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:257
+msgid "Hide"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:265
+msgid "this field if"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:276
+msgid "Any"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:283
+#: assets/src/admin/screens/option-set/OptionSetToolbar.js:14
+msgid "All"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:291
+msgid "of these rules match:"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:300
+msgid "Add another field first to reference it in a rule."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:309
+msgid "Field"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:315
+msgid "Comparison"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:331
+msgid "No rules yet — add your first condition below."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:371
+msgid "Remove rule"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/LogicTab.js:393
+msgid "Add condition"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:17
+msgid "Circle"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:21
+msgid "Square"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:25
+msgid "Rounded"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:50
+msgid "PX"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:78
+msgid "Image styles"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:82
+msgid "Color styles"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:91
+msgid "Swatch style"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:119
+msgid "Width"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:128
+msgid "Height"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:137
+msgid "Border radius"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:170
+msgid "Field width"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:182
+msgid "Description placement"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:195
+msgid "Below label"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:202
+msgid "Below field"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:209
+msgid "Tooltip"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:221
+msgid "Price placement"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:225
+msgid "Where the per-choice price appears on the storefront."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:236
+msgid "Next to the field label"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:243
+msgid "Next to each choice"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/tabs/StylesTab.js:256
+msgid "CSS class"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TelConfig.js:21
+msgid "Number Only"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TelConfig.js:25
+msgid "Number & Flag"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TelConfig.js:29
+msgid "Number & Flag & Dial Code"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TelConfig.js:83
+msgid "Auto (store country)"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TelConfig.js:99
+msgid "Flag style"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TelConfig.js:114
+msgid "Default country"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TimeConfig.js:22
+msgid "12 Hours"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TimeConfig.js:26
+msgid "24 Hours"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TimeConfig.js:201
+msgid "Time format"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TimeConfig.js:213
+msgid "Step (minutes)"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TimeConfig.js:236
+msgid "Earliest time"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TimeConfig.js:240
+#: assets/src/admin/screens/builder/settings/TimeConfig.js:256
+msgid "Leave at 00:00 for no limit."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TimeConfig.js:252
+msgid "Latest time"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TypeConfig.js:53
+msgid "Variables in [brackets]; functions and comparisons supported."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TypeConfig.js:57
+msgid "Variables in {{double braces}}; arithmetic and % only."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TypeConfig.js:74
+msgid "Available variables"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/TypeConfig.js:82
+msgid "No other fields yet."
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:41
+msgid "Default color"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:60
+msgid "Enable Min/Max Restriction"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:69
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:151
+msgid "Minimum value"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:81
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:163
+msgid "Maximum value"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:96
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:177
+msgid "Steps"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:108
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:189
+msgid "Default value"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:130
+msgid "Enable PostFix"
+msgstr ""
+
+#: assets/src/admin/screens/builder/settings/ValueFieldConfig.js:138
+msgid "Postfix text"
+msgstr ""
+
+#: assets/src/admin/screens/builder/store/globalStyleModel.js:52
+msgid "Classic"
+msgstr ""
+
+#: assets/src/admin/screens/builder/store/globalStyleModel.js:65
+msgid "Blue"
+msgstr ""
+
+#: assets/src/admin/screens/builder/store/globalStyleModel.js:78
+msgid "Purple"
+msgstr ""
+
+#: assets/src/admin/screens/builder/store/globalStyleModel.js:91
+msgid "Pink"
+msgstr ""
+
+#: assets/src/admin/screens/builder/store/globalStyleModel.js:104
+msgid "Orange"
+msgstr ""
+
+#: assets/src/admin/screens/builder/store/globalStyleModel.js:117
+msgid "Green"
+msgstr ""
+
+#: assets/src/admin/screens/builder/store/globalStyleModel.js:130
+msgid "Teal"
+msgstr ""
+
+#: assets/src/admin/screens/builder/store/globalStyleModel.js:143
+msgid "Lime"
+msgstr ""
+
+#. translators: %s: display name
+#: assets/src/admin/screens/Dashboard.js:54
+#: assets/src/admin/screens/dashboard/DashboardHeader.js:28
+msgid "Welcome back, %s"
+msgstr ""
+
+#: assets/src/admin/screens/Dashboard.js:60
+#: assets/src/admin/screens/dashboard/DashboardHeader.js:34
+msgid "Welcome back"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/DashboardHeader.js:40
+msgid "Create dynamic pricing options for your WooCommerce products"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/GettingStarted.js:16
+msgid "Create an option set"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/GettingStarted.js:20
+msgid "Add fields like dropdowns, colour swatches or text inputs"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/GettingStarted.js:26
+msgid "Add fields to a set"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/GettingStarted.js:30
+msgid "Build the form shoppers see on the product page"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/GettingStarted.js:36
+msgid "Assign & publish"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/GettingStarted.js:40
+msgid "Link a set to products, categories or tags"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/GettingStarted.js:46
+msgid "Track performance"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/GettingStarted.js:50
+msgid "Monitor impressions and conversions in Analytics"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/GettingStarted.js:78
+msgid "Getting Started"
+msgstr ""
+
+#. translators: 1: completed steps, 2: total steps
+#: assets/src/admin/screens/dashboard/GettingStarted.js:86
+msgid "%1$d of %2$d completed"
+msgstr ""
+
+#. translators: %s: step title
+#: assets/src/admin/screens/dashboard/GettingStarted.js:146
+msgid "Start: %s"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/helpers.js:63
+msgid "just now"
+msgstr ""
+
+#. translators: %d: number of years
+#: assets/src/admin/screens/dashboard/helpers.js:95
+msgid "%d year ago"
+msgid_plural "%d years ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of months
+#: assets/src/admin/screens/dashboard/helpers.js:106
+msgid "%d month ago"
+msgid_plural "%d months ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of days
+#: assets/src/admin/screens/dashboard/helpers.js:117
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of hours
+#: assets/src/admin/screens/dashboard/helpers.js:128
+msgid "%d hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of minutes
+#: assets/src/admin/screens/dashboard/helpers.js:139
+msgid "%d minute ago"
+msgid_plural "%d minutes ago"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/src/admin/screens/dashboard/QuickActions.js:22
+msgid "Global Styles"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/QuickActions.js:26
+msgid "Customise appearance"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/QuickActions.js:35
+msgid "Configure the plugin"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/QuickActions.js:44
+msgid "View performance reports"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/QuickActions.js:59
+msgid "Quick Actions"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/RecentActivity.js:29
+msgid "Recent Activity"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/RecentActivity.js:40
+msgid "View all"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/RecentActivity.js:50
+msgid "No activity yet — create your first option set to get started."
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/RecentActivity.js:61
+msgid "Option set published"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/RecentActivity.js:65
+msgid "Draft saved"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/StatStrip.js:104
+msgid "live"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/StatStrip.js:114
+msgid "Total Impressions"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/StatStrip.js:124
+msgid "Add to Cart"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/StatStrip.js:138
+msgid "Revenue Generated"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/StatStrip.js:166
+msgid "Key metrics"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/TopPerformers.js:31
+msgid "Top Performers"
+msgstr ""
+
+#: assets/src/admin/screens/dashboard/TopPerformers.js:52
+msgid "No revenue recorded yet. Publish a set and conversions will appear here."
+msgstr ""
+
+#. translators: %d: conversions
+#: assets/src/admin/screens/dashboard/TopPerformers.js:92
+msgid "%d conversion"
+msgid_plural "%d conversions"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: option set title
+#: assets/src/admin/screens/option-set/OptionSetRow.js:86
+msgid "Select %s"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetRow.js:97
+#: assets/src/admin/screens/option-set/OptionSetTable.js:17
+msgid "ID"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetRow.js:107
+#: assets/src/admin/screens/option-set/OptionSetTable.js:22
+msgid "Option Name"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetRow.js:124
+#: assets/src/admin/screens/option-set/OptionSetTable.js:27
+msgid "Status"
+msgstr ""
+
+#. translators: %s: option set title
+#: assets/src/admin/screens/option-set/OptionSetRow.js:146
+msgid "Toggle status for %s"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetRow.js:160
+#: assets/src/admin/screens/option-set/OptionSetStats.js:35
+#: assets/src/admin/screens/option-set/OptionSetToolbar.js:22
+msgid "Inactive"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetRow.js:170
+#: assets/src/admin/screens/option-set/OptionSetTable.js:32
+msgid "Category"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetRow.js:190
+#: assets/src/admin/screens/option-set/OptionSetTable.js:40
+msgid "Options"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetRow.js:206
+#: assets/src/admin/screens/option-set/OptionSetTable.js:45
+msgid "Actions"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetRow.js:214
+msgid "Open option set"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetRow.js:222
+msgid "Edit option set"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetRow.js:230
+msgid "Duplicate option set"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetRow.js:238
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:469
+msgid "Delete option set"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:195
+msgid "Option set duplicated."
+msgstr ""
+
+#. translators: %d: number of sets exported
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:221
+msgid "Exported %d option set(s)."
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:250
+msgid "Import complete."
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:259
+msgid "Invalid JSON file."
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:297
+msgid "Bulk action applied."
+msgstr ""
+
+#. translators: %d: number selected
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:353
+msgid "%d selected"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:368
+msgid "Activate"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:378
+msgid "Deactivate"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:410
+msgid "Clear"
+msgstr ""
+
+#. translators: 1: from 2: to 3: page 4: total pages
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:441
+msgid "Showing %1$d to %2$d (page %3$d of %4$d)"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:465
+msgid "Delete selected option sets"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:474
+msgid "This permanently removes the option set(s) and detaches them from all products. Continue?"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetScreen.js:490
+msgid "Option set deleted."
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetStats.js:23
+msgid "Total"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetStats.js:41
+msgid "Fields"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetStats.js:49
+msgid "Option set summary"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetTable.js:95
+msgid "No option sets found"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetTable.js:99
+msgid "Create your first option set to start selling configurable products."
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetTable.js:113
+msgid "New Option"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetTable.js:162
+msgid "Select all option sets"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetToolbar.js:89
+msgid "Search option sets"
+msgstr ""
+
+#: assets/src/admin/screens/option-set/OptionSetToolbar.js:170
+msgid "Import"
+msgstr ""
+
+#: assets/src/admin/screens/Settings.js:48
+#: assets/src/admin/screens/settings/SettingsHeader.js:74
+msgid "Unsaved changes"
+msgstr ""
+
+#: assets/src/admin/screens/Settings.js:62
+#: assets/src/admin/screens/settings/SettingsHeader.js:92
+msgid "Save Settings"
+msgstr ""
+
+#: assets/src/admin/screens/Settings.js:77
+msgid "Manage your plugin configuration."
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:38
+msgid "Price Display"
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:39
+msgid "Configure how prices appear"
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:43
+msgid "Control the optional price and running total lines shown beneath the product options."
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:52
+msgid "Cart & Checkout"
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:56
+msgid "Control visibility in cart"
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:60
+msgid "Choose whether to show or hide selected options in the cart and checkout pages."
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:69
+msgid "Shop Loop"
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:70
+msgid "Shop page button settings"
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:74
+msgid "Decide how the shop and archive pages behave for products that have options."
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:83
+msgid "Upload Retention"
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:87
+msgid "File storage duration"
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:91
+msgid "Set how long uploaded files are kept. Use 0 to keep files forever."
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:100
+msgid "Custom Fonts"
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:101
+msgid "Manage typography"
+msgstr ""
+
+#: assets/src/admin/screens/settings/config.js:105
+msgid "Upload custom fonts to use in your product options. Supported formats: TTF, OTF, WOFF, WOFF2."
+msgstr ""
+
+#: assets/src/admin/screens/settings/FilePicker.js:37
+msgid "Choose file…"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/CartCheckoutSection.js:21
+msgid "Options will be visible"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/CartCheckoutSection.js:25
+msgid "Options will be hidden"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/CartCheckoutSection.js:35
+msgid "Cart Page"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/CartCheckoutSection.js:39
+msgid "Visibility in cart"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/CartCheckoutSection.js:46
+msgid "Hide options in cart"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/CartCheckoutSection.js:58
+msgid "Checkout Page"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/CartCheckoutSection.js:62
+msgid "Visibility at checkout"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/CartCheckoutSection.js:69
+msgid "Hide options in checkout"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:91
+msgid "Choose a font file first."
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:114
+msgid "Add New Font"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:118
+msgid "Upload a font file and give it a name"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:125
+msgid "Font Title *"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:132
+msgid "My Custom Font"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:140
+msgid "CSS Family (optional)"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:147
+msgid "'My Custom Font', sans-serif"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:155
+msgid "Font File *"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:169
+msgid "Uploading…"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:183
+msgid "Uploaded Fonts"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:203
+msgid "No custom fonts uploaded yet"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:209
+msgid "Add your first font above"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:226
+msgid "Font Title"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:237
+msgid "CSS Family"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:292
+msgid "Edit font"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:306
+msgid "Delete font"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/FontsSection.js:322
+msgid "The quick brown fox jumps over the lazy dog"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/PriceDisplaySection.js:27
+msgid "Options Price Line"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/PriceDisplaySection.js:31
+msgid "The combined price of selected options"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/PriceDisplaySection.js:37
+msgid "Show options price line"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/PriceDisplaySection.js:45
+#: assets/src/admin/screens/settings/sections/PriceDisplaySection.js:78
+msgid "Label"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/PriceDisplaySection.js:60
+msgid "Total Price Line"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/PriceDisplaySection.js:64
+msgid "Base product price plus all options"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/PriceDisplaySection.js:70
+msgid "Show total price line"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/ShopLoopSection.js:27
+msgid "Select Options Button"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/ShopLoopSection.js:31
+msgid "Behaviour on the shop loop"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/ShopLoopSection.js:37
+msgid "Shoppers are sent to the product page to choose options"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/ShopLoopSection.js:41
+msgid "Default WooCommerce add-to-cart behaviour"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/ShopLoopSection.js:48
+msgid "Force \"Select options\" on shop loop"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/ShopLoopSection.js:60
+msgid "Button Text"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/ShopLoopSection.js:64
+msgid "Label shown on the shop loop"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/ShopLoopSection.js:70
+msgid "Shop loop button text"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/UploadRetentionSection.js:22
+msgid "Kept forever"
+msgstr ""
+
+#. translators: %d: number of days.
+#: assets/src/admin/screens/settings/sections/UploadRetentionSection.js:26
+msgid "Deleted after %d day"
+msgid_plural "Deleted after %d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/src/admin/screens/settings/sections/UploadRetentionSection.js:79
+msgid "Temporary Uploads"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/UploadRetentionSection.js:89
+msgid "After Order Placed"
+msgstr ""
+
+#: assets/src/admin/screens/settings/sections/UploadRetentionSection.js:99
+msgid "After Order Completed"
+msgstr ""
+
+#: assets/src/admin/screens/settings/SettingsHeader.js:63
+msgid "Manage your plugin configuration"
+msgstr ""
+
+#: assets/src/admin/screens/settings/useFonts.js:48
+msgid "Font uploaded."
+msgstr ""
+
+#: assets/src/admin/screens/settings/useFonts.js:72
+msgid "Font updated."
+msgstr ""
+
+#: assets/src/admin/screens/settings/useFonts.js:95
+msgid "Font deleted."
+msgstr ""
+
+#: assets/src/admin/screens/settings/useSettings.js:94
+msgid "Settings saved."
+msgstr ""

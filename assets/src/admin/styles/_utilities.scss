@@ -1,0 +1,98 @@
+/**
+ * Option Set Builder Admin — Theme-aware utility classes.
+ *
+ * Lightweight composable atoms. Every value below resolves to a CSS custom
+ * property declared in `_theme.scss`, so switching the active template
+ * automatically updates every utility. Scoped to `#optset-admin-root` so they
+ * never leak to the WP front-end.
+ */
+
+#optset-admin-root {
+	/* — text colours ——————————————————————————————————————————————————— */
+	.optset-u-text-ink     { color: var(--optset-c-ink); }
+	.optset-u-text-muted   { color: var(--optset-c-muted); }
+	.optset-u-text-primary { color: var(--optset-c-primary); }
+	.optset-u-text-success { color: var(--optset-c-success); }
+	.optset-u-text-danger  { color: var(--optset-c-danger); }
+	.optset-u-text-warning { color: var(--optset-c-warning); }
+
+	/* — backgrounds ———————————————————————————————————————————————————— */
+	.optset-u-bg-surface   { background: var(--optset-c-surface); }
+	.optset-u-bg-surface-2 { background: var(--optset-c-surface-2); }
+	.optset-u-bg-primary   { background: var(--optset-c-primary); color: var(--optset-c-primary-ink); }
+	.optset-u-bg-soft      { background: var(--optset-c-primary-soft); }
+
+	/* — borders ——————————————————————————————————————————————————————— */
+	.optset-u-border       { border: 1px solid var(--optset-c-border); }
+	.optset-u-border-strong{ border: 1px solid var(--optset-c-border-strong); }
+	.optset-u-border-primary{ border: 1px solid var(--optset-c-primary); }
+
+	/* — radii ————————————————————————————————————————————————————————— */
+	.optset-u-r-sm   { border-radius: var(--optset-r-sm); }
+	.optset-u-r-md   { border-radius: var(--optset-r-md); }
+	.optset-u-r-lg   { border-radius: var(--optset-r-lg); }
+	.optset-u-r-full { border-radius: var(--optset-r-full); }
+
+	/* — elevation ————————————————————————————————————————————————————— */
+	.optset-u-elev-1 { box-shadow: var(--optset-sh-1); }
+	.optset-u-elev-2 { box-shadow: var(--optset-sh-2); }
+	.optset-u-elev-3 { box-shadow: var(--optset-sh-3); }
+
+	/* — spacing (margin & padding scale) —————————————————————————————— */
+	@for $i from 0 through 8 {
+		.optset-u-m-#{$i}  { margin: var(--optset-s-#{$i}, 0); }
+		.optset-u-mt-#{$i} { margin-top: var(--optset-s-#{$i}, 0); }
+		.optset-u-mb-#{$i} { margin-bottom: var(--optset-s-#{$i}, 0); }
+		.optset-u-p-#{$i}  { padding: var(--optset-s-#{$i}, 0); }
+		.optset-u-px-#{$i} { padding-inline: var(--optset-s-#{$i}, 0); }
+		.optset-u-py-#{$i} { padding-block: var(--optset-s-#{$i}, 0); }
+	}
+
+	/* — layout —————————————————————————————————————————————————————————— */
+	.optset-u-flex        { display: flex; }
+	.optset-u-inline-flex { display: inline-flex; }
+	.optset-u-grid        { display: grid; }
+	.optset-u-items-center{ align-items: center; }
+	.optset-u-items-start { align-items: flex-start; }
+	.optset-u-justify-between { justify-content: space-between; }
+	.optset-u-justify-center  { justify-content: center; }
+
+	@for $i from 1 through 6 {
+		.optset-u-gap-#{$i} { gap: var(--optset-s-#{$i}); }
+	}
+
+	.optset-u-w-full { width: 100%; }
+	.optset-u-h-full { height: 100%; }
+
+	/* — type ———————————————————————————————————————————————————————————— */
+	.optset-u-font   { font-family: var(--optset-font); }
+	.optset-u-mono   { font-family: var(--optset-font-mono); }
+	.optset-u-weight-medium { font-weight: 500; }
+	.optset-u-weight-bold   { font-weight: 700; }
+	.optset-u-truncate {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	/* — interaction ————————————————————————————————————————————————————— */
+	.optset-u-clickable {
+		cursor: pointer;
+		transition:
+			background var(--optset-dur) var(--optset-ease),
+			border-color var(--optset-dur) var(--optset-ease),
+			box-shadow var(--optset-dur) var(--optset-ease),
+			transform var(--optset-dur) var(--optset-ease);
+
+		&:hover { transform: translateY(-1px); }
+		&:active { transform: translateY(0); }
+	}
+
+	.optset-u-focus-ring:focus-visible {
+		outline: none;
+		box-shadow: var(--optset-sh-ring);
+	}
+
+	/* — visibility ——————————————————————————————————————————————————————— */
+	.optset-u-hide { display: none !important; }
+}
