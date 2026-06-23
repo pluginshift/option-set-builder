@@ -7,7 +7,7 @@ composer.lock
 dist/
 build/
 
-# Environment variables
+# Environment & variables
 .env
 .env.local
 .env.*.local
