@@ -91,6 +91,44 @@ https://wordpress.org/about/privacy/
 The plugin does not contact any other external service and does not transmit
 any site, store, or visitor data.
 
+== Source Code & Build Process ==
+
+The complete, human-readable source code for this plugin is publicly available. The
+admin builder and storefront interfaces are built with React/JavaScript and SCSS; the
+compiled, minified assets in the `assets/build/` directory are generated from the
+un-minified sources in the `assets/src/` directory.
+
+* Development repository (full source + build tooling): https://github.com/pluginshift/option-set-builder
+
+To regenerate the compiled `assets/build/` assets from source:
+
+1. Install Node.js 20+ and npm.
+2. Run `npm install` to install the build dependencies.
+3. Run `npm run build` to compile `assets/src/` into `assets/build/`. The build uses
+   @wordpress/scripts (webpack) with two named entry points — `admin` and `store` — as
+   configured in `webpack.config.js`.
+
+PHP development dependencies are managed with Composer (`composer install`). The
+distributed plugin has no runtime Composer dependencies and ships a lightweight PSR-4
+autoloader (`OptionSetBuilder\` → `includes/`).
+
+React, ReactDOM and the WordPress packages (@wordpress/api-fetch, @wordpress/i18n,
+@wordpress/element, etc.) are not bundled into the build output — they are provided by
+WordPress core at runtime and declared as dependencies in the generated `*.asset.php`
+manifests alongside each bundle.
+
+Third-party libraries compiled into the build output (via npm + webpack):
+
+* @dnd-kit (core, sortable, utilities) — https://dndkit.com/
+* Radix UI (@radix-ui/react-dialog) — https://www.radix-ui.com/
+* Tiptap editor (@tiptap/*) — https://tiptap.dev/
+* Framer Motion — https://www.framer.com/motion/
+* flatpickr — https://flatpickr.js.org/
+* lucide-react — https://lucide.dev/
+* cmdk — https://cmdk.paco.me/
+* classnames — https://github.com/JedWatson/classnames
+* zustand — https://github.com/pmndrs/zustand
+
 == Changelog ==
 
 = 1.0.0 =
